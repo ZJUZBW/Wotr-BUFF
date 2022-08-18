@@ -1,5 +1,29 @@
 # 【新人进阶】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗
 
+**制作者：aaathl  or 唯行**
+
+正义之怒&拥王者的交流群：一群487092507、~~二群：972953691（**推荐**，二群聊游戏比较多）~~、2.5群：191268357
+
+持续更新中—— 有问题或补充可以在群里@我
+
+**GITHUB链接** ---[正义之怒主角BD收录](https://github.com/ZJUZBW/Wotr-BD-LR)
+
+**GITHUB链接** ---[正义之怒物理职业测评](https://github.com/ZJUZBW/WotR-CA)
+
+**GITHUB链接** ---[正义之怒队友BD收录](https://github.com/ZJUZBW/-Wotr-BD-)
+
+**GITHUB链接** ---[拥王者&正义之怒全专长测评](https://github.com/ZJUZBW/Wotr-AofF)
+
+**GITHUB链接** ---[正义之怒施法者入门和进阶手册](https://github.com/ZJUZBW/Wotr-AofS)
+
+**GITHUB链接** ---[【新人向】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗](https://github.com/ZJUZBW/Wotr-BUFF)
+
+**百度贴吧**：[【正义之怒不公平战报】【无佣兵无修改】魔能射手+全剧情队友](https://tieba.baidu.com/p/7974312458)
+
+**哔哩哔哩**：[【正义之怒不公平视频录制】【无修改】恶魔法师](https://www.bilibili.com/video/BV1Bu411C7xR)（视频太麻烦了，目前就更新到第二章虫群女王之前，而且版本比较旧了，上面的文字战报思路和教学性更好，可以结合观看）
+
+**百度网盘**：https://pan.baidu.com/s/15jx_JzQDWn4_kcxlLRdegg 提取码：wotr，【注：不会实时更新】
+
 ## 前言
 
 如题：最近很多人新入坑拥王者&正义之怒，因为不太会使用法术buff和合理搭配队友来增强人物的各种属性，导致队伍的整体实力很低，游戏体验不佳，甚至抄了BD也体会不到其强力之处。因此打算给大家详细介绍一下常用的关键buff法术和职业能力搭配，以及如何对抗敌人的各种法术控制和法术伤害（即法术对抗）。
