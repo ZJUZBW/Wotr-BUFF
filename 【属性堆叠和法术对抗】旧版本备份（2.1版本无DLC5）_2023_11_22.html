@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>README</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='新人进阶属性命中ab）防御ac）和豁免的堆叠及法术对抗'><span>【新人进阶】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗</span></h1><p><strong><span>制作者：aaathl</span></strong><span>，持续更新中—— 有问题或补充可以在群里@我</span></p><p><span>正义之怒&amp;拥王者的交流群：一群487092507（目前只剩这个群了）、</span><del><span>二群：972953691（</span><strong><span>推荐</span></strong><span>，二群聊游戏比较多）</span></del><span>、</span><del><span>2.5群：191268357</span></del><span>、2.6群：570449412（新建的）、也可以加下面的“Owlcat游戏交流”频道（扫描二维码加入，主要讨论拥王者、正义之怒和未来要出的行商浪人）。</span></p><ul><li><p><strong><span>在国内很多网络环境，GITHUB网站访问都存在一定抽风现象，会时不时无法访问，通常刷新就可以解决。如果实在问题严重，</span><a href='https://steampp.net/'><span>Watt Toolkit</span></a><span> 可以帮到你。也可以下载整个说明文档（右上角绿色图标，CODE---Download ZIP），下载后解压，用浏览器或者记事本（可以自行下载更好的软件，善用搜索引擎，关键词“打开.md文件”）直接打开 README.md 这个文件即可</span></strong><span>。【特别注意！！！】</span></p></li><li><p><strong><span>GITHUB链接</span></strong></p><ul><li><a href='https://github.com/ZJUZBW/Wotr-BD_mod'><strong><span>完全洗点+MOD内容扩展情况下的队友职业RP加点思路</span></strong><span>（新！）</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-BD-LR'><span>正义之怒主角BD收录</span></a></li><li><a href='https://github.com/ZJUZBW/WotR-CA'><span>正义之怒物理职业测评</span></a></li><li><a href='https://github.com/ZJUZBW/-Wotr-BD-'><span>正义之怒原版队友BD收录</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-AofF'><span>拥王者&amp;正义之怒全专长测评</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-AofS'><span>正义之怒施法者入门和进阶手册</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-BUFF'><span>【新人向】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗</span></a></li><li><a href='https://github.com/ZJUZBW/Wotr-WC'><span>【正义之怒不公平战报/攻略】【无佣兵无修改】魔能射手+全剧情队友</span></a></li><li><a href='https://github.com/nixgnot/WOTR-CONTENTS-MODS-CN'><span>【正义之怒】内容扩展型MOD收集计划</span></a><span>【大部分好用的MOD都在这里】</span></li></ul></li><li><p><strong><span>百度贴吧</span></strong></p><ul><li><a href='https://tieba.baidu.com/p/7974312458'><span>【正义之怒不公平战报】【无佣兵无修改】魔能射手+全剧情队友</span></a></li></ul></li><li><p><strong><span>哔哩哔哩</span></strong></p><ul><li><a href='https://www.bilibili.com/video/BV1Bu411C7xR'><span>【正义之怒不公平视频录制】【无修改】恶魔法师</span></a><span>（视频太麻烦了，目前就更新到第二章虫群女王之前，而且版本比较旧了，上面的文字战报思路和教学性更好，可以结合观看）</span></li></ul></li><li><p><strong><span>百度网盘</span></strong><span>：</span><a href='https://pan.baidu.com/s/15jx_JzQDWn4_kcxlLRdegg' target='_blank' class='url'>https://pan.baidu.com/s/15jx_JzQDWn4_kcxlLRdegg</a><span> 提取码：wotr，【注：不会实时更新】</span></p></li></ul><h2 id='前言'><span>前言</span></h2><p><strong><span>如题</span></strong><span>：最近很多人新入坑拥王者&amp;正义之怒，因为不太会使用法术buff和合理搭配队友来增强人物的各种属性，导致队伍的整体实力很低，游戏体验不佳，甚至抄了BD也体会不到其强力之处。因此打算给大家详细介绍一下常用的关键buff法术和职业能力搭配，以及如何对抗敌人的各种法术控制和法术伤害（即法术对抗）。</span></p><p><strong><span>PS：看完命中堆叠以后，我说斩矛剑圣是T0菜刀，应该没人有意见了吧</span></strong></p><p><span>我将从以下几个方面给大家做一个详细介绍：</span></p><ol start='' ><li><span>基础属性的堆叠，非常重要，这关系到你的AC、AB、豁免和生命值。</span></li><li><span>命中——即攻击加值（AB）——的堆叠，关系到你是否经常未命中。</span></li><li><span>防御——即防御等级（AC）——的堆叠，关系到敌人是否经常命中。</span></li><li><span>豁免——即三种豁免等级——的堆叠，关系到敌人法术是否能影响到你。</span></li><li><span>减值叠加原则，以及常用的减少敌人AC和豁免的手段。</span></li><li><span>常用法术对抗——元素抗力、伤害减免（SR）、免疫XXX效应、免疫XX。</span></li><li><span>常用的好法术</span></li></ol><h2 id='目录'><span>目录</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#新人进阶属性命中ab）防御ac）和豁免的堆叠及法术对抗">【新人进阶】属性、命中（AB）、防御（AC）和豁免的堆叠及法术对抗</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n40"><a class="md-toc-inner" href="#前言">前言</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n59"><a class="md-toc-inner" href="#目录">目录</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n76"><a class="md-toc-inner" href="#备注">备注</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n79"><a class="md-toc-inner" href="#属性的堆叠">属性的堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n81"><a class="md-toc-inner" href="#属性叠加的基本原则">属性叠加的基本原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n89"><a class="md-toc-inner" href="#属性的常见加值名称以及常用来源">属性的常见加值名称以及常用来源</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n178"><a class="md-toc-inner" href="#命中的堆叠">命中的堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n179"><a class="md-toc-inner" href="#人物最基本的命中构成">人物最基本的命中构成</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n182"><a class="md-toc-inner" href="#命中叠加的基本原则">命中叠加的基本原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n194"><a class="md-toc-inner" href="#命中的常见加值名称以及常用来源">命中的常见加值名称以及常用来源</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n281"><a class="md-toc-inner" href="#举例-1">举例</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n282"><a class="md-toc-inner" href="#前期">前期</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n285"><a class="md-toc-inner" href="#7级">7级</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n319"><a class="md-toc-inner" href="#8级">8级</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n344"><a class="md-toc-inner" href="#9级">9级</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n391"><a class="md-toc-inner" href="#中期">中期</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n427"><a class="md-toc-inner" href="#防御的堆叠">防御的堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n429"><a class="md-toc-inner" href="#人物最基本的防御等级ac）构成">人物最基本的防御等级（AC）构成</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n435"><a class="md-toc-inner" href="#敌人陷入措手不及的办法">敌人陷入措手不及的办法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n457"><a class="md-toc-inner" href="#防御等级的常见加值名称以及常用来源"><strong>防御等级的常见加值名称以及常用来源：</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n461"><a class="md-toc-inner" href="#举例-2">举例</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n465"><a class="md-toc-inner" href="#6级">6级</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n491"><a class="md-toc-inner" href="#12级">12级</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n530"><a class="md-toc-inner" href="#16级">16级</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n563"><a class="md-toc-inner" href="#豁免的堆叠">豁免的堆叠</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n568"><a class="md-toc-inner" href="#关于职业加成的豁免等级计算">关于职业加成的豁免等级计算</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n587"><a class="md-toc-inner" href="#关于属性加成的豁免">关于属性加成的豁免</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n598"><a class="md-toc-inner" href="#豁免等级叠加的基本原则">豁免等级叠加的基本原则</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n606"><a class="md-toc-inner" href="#豁免等级的常见加值名称以及常用来源">豁免等级的常见加值名称以及常用来源</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n697"><a class="md-toc-inner" href="#举例-3">举例</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n698"><a class="md-toc-inner" href="#守序善良圣武士的豁免">守序善良圣武士的豁免</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n768"><a class="md-toc-inner" href="#非善良人的豁免">非善良人的豁免</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n841"><a class="md-toc-inner" href="#减值叠加原则">减值叠加原则</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n903"><a class="md-toc-inner" href="#常用法术对抗">常用法术对抗</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n907"><a class="md-toc-inner" href="#常见负面状态">常见负面状态</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1095"><a class="md-toc-inner" href="#常见描述符和其他效果">常见描述符和其他效果</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1177"><a class="md-toc-inner" href="#常见能量伤害">常见能量伤害</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1227"><a class="md-toc-inner" href="#常用的好用法术">常用的好用法术</a></span></p></div><ul><li><a href='#属性的堆叠'><span>属性的堆叠</span></a></li><li><a href='#命中的堆叠'><span>命中的堆叠 ---防止一堆未命中</span></a></li><li><a href='#防御的堆叠'><span>防御的堆叠 ---让敌人打不中你</span></a></li><li><a href='#豁免的堆叠'><span>豁免的堆叠 ---增加自己的豁免</span></a></li><li><a href='#减值叠加原则'><span>减值叠加原则 ---降低敌人的豁免</span></a></li><li><a href='#常用法术对抗'><span>常用法术对抗 ---怎么防御负面状态</span></a></li><li><a href='#常用的好用法术'><span>常用的好用法术 ---这里主要是加BUFF</span></a></li></ul><h2 id='备注'><span>备注</span></h2><p><span>术士、法师和奥能师用同一个法表，先知和牧师用同一个法表，诗人和歌者用同一个法表，因此后面会简写。</span></p><p><span>符号释义：【】表示注释、职业能力或种族特性，（）表示补充说明/或者，&lt;&gt;表示装备/武器，[ ]表示法术，” &quot;表示专长</span></p><h2 id='属性的堆叠'><span>属性的堆叠</span></h2><p><strong><span>人物属性基本构成</span></strong><span>：开局加点+种族加成+每4级一个自由属性点，一般19点主要属性开（菜刀就19力或19敏，施法者就19施法属性），20级可以到24点。</span></p><h3 id='属性叠加的基本原则'><span>属性叠加的基本原则</span></h3><ol start='' ><li><span>大部分同名的加值不能叠加，只能取最高值。比如牛之蛮力：+4力量：增强，力量腰带+2力量：增强，同时用了这两个法术，最多也只能+4力量。</span></li><li><span>不同名的加值可以叠加。比如牛之蛮力：+4力量，变巨术+2力量：体型，同时用这两个法术，就可以叠加变成+6力量。</span></li><li><span>少部分同名的加值（其他、种族、环境--不确定），来源不同就可以叠加。比如龙脉术士+4力量：种族，人类+2力量：种族，情势之戒+2力量：环境，这三者就可以叠加变成+8力量。</span></li></ol><h3 id='属性的常见加值名称以及常用来源'><span>属性的常见加值名称以及常用来源</span></h3><figure><table><thead><tr><th><span>加值名称</span></th><th><span>来源1（持续时间为轮级和以下或有次数现限制）</span></th><th><span>来源2（容易常驻的或者永久）</span></th><th><span>剧情buff</span></th></tr></thead><tbody><tr><td><span>基础</span></td><td>&nbsp;</td><td><span>开局加点和后续加点</span></td><td>&nbsp;</td></tr><tr><td><span>种族</span></td><td>&nbsp;</td><td><span>开局种族，半精灵亲眷，龙脉术士的属性加强，</span></td><td>&nbsp;</td></tr><tr><td><span>增强</span></td><td><span>[战法转换]</span></td><td><span>&lt;+N属性腰带/头环&gt;，[牛之蛮力、猫之轻灵、熊之坚韧、狐之狡黠、枭之睿智、鹰之威威]——包括群体版本，[火焰之躯]，【动物之力】，[狼/熊之型]</span></td><td>&nbsp;</td></tr><tr><td><span>体型</span></td><td><span>[正气如虹]</span></td><td><span>[变巨术]，[伟岸雄姿]，[缩小术]，[微缩雄姿]，[可怖外表]</span></td><td>&nbsp;</td></tr><tr><td><span>崇圣</span></td><td><span>[金鹰之魂]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>变形</span></td><td>&nbsp;</td><td><span>[XXX变形术]，[龙形1、2、3]，[元素之躯N]</span></td><td>&nbsp;</td></tr><tr><td><span>其他</span></td><td>&nbsp;</td><td><span>维勒西娅的项链，传奇道途奖励</span></td><td>&nbsp;</td></tr><tr><td><span>士气</span></td><td><span>[狂暴术]</span></td><td><span>【心灵弦歌】，[自信之心]，&lt;网行者&gt;轻甲，&lt;机敏之刃&gt;穿甲剑</span></td><td>&nbsp;</td></tr><tr><td><span>天赋</span></td><td>&nbsp;</td><td><span>&lt;六个手册（比如静思手册）&gt;，&lt;灵魂魔药&gt;——王国/圣战系统，猎人的【动物之力】，化形师的【拟态】，&lt;真正统治者的七美德&gt;戒指（限定主角，限定道途）</span></td><td>&nbsp;</td></tr><tr><td><span>炼金</span></td><td>&nbsp;</td><td><span>【诱变剂】——突变战士/炼金术士</span></td><td>&nbsp;</td></tr><tr><td><span>亵渎</span></td><td>&nbsp;</td><td><span>&lt;灵魂絮语之杖&gt;，&lt;垂暮智慧护符&gt;；&lt;德莱文的帽子&gt;，&lt;含羞百合&gt;头盔，&lt;蛇皮甲&gt;</span></td><td><span>亵渎晋升</span></td></tr><tr><td><span>餐食</span></td><td>&nbsp;</td><td><span>炽热玉米卷饼</span></td><td>&nbsp;</td></tr><tr><td><span>恶魔</span></td><td>&nbsp;</td><td><span>【威加魔相、霸烙魔相、遁影魔相、空奢魔相】</span></td><td>&nbsp;</td></tr><tr><td><span>神话</span></td><td>&nbsp;</td><td><span>虫群道途</span></td><td>&nbsp;</td></tr><tr><td><span>表现</span></td><td>&nbsp;</td><td><span>莫测真理（&lt;无可辩驳眼镜&gt;+&lt;不宣之实法袍&gt;组合效果，+2智力）</span></td><td>&nbsp;</td></tr><tr><td><span>环境</span></td><td>&nbsp;</td><td><span>&lt;不宣之实法袍&gt;（+2感知）、&lt;值得信赖的朋友&gt;（传奇道途限定，+2魅力）</span></td><td>&nbsp;</td></tr></tbody></table></figure><p><strong><span>以斩矛剑圣（1鳞拳19剑圣）的前期举例</span></strong><span>：因为命中和伤害是力量加成，前期又没有+4巨力腰带，所以必须要加牛之蛮力，这样可以多4力量(2力量调整值)——多2AB。因为剑圣是智力、敏捷和魅力上AC，所以必须加猫之轻灵、狐之狡黠和鹰之威威，这里共计又能加6AC。力系菜刀基本上都靠变巨术，前期也要加变巨术，这样可以增加触及范围和武器伤害骰，额外加2力量：体型。为了防止暴毙，主角一般要额外加熊之坚韧来增强血量和强韧。</span></p><p><strong><span>仅靠属性buff，这个BD就在前期额外再加了3AB（用了奥法精准就是5AB）和6AC（变巨术减值放后面计算</span></strong><span>）。这里就是新手和熟悉规则的老手之间的差距。剑圣、武僧等无甲职业之所以不适合新手抄作业，是因为他非常依赖基础属性——或者说对于属性的利用率非常好，属性堆起来以后就非常厉害。</span></p><h2 id='命中的堆叠'><span>命中的堆叠</span></h2><h3 id='人物最基本的命中构成'><span>人物最基本的命中构成</span></h3><p><span>基础攻击加值（BAB） + 属性调整值（一般是力量或敏捷） + 武器附魔加值（增强）</span></p><p><span>比如：一个无buff的满BAB职业，24力量，只拿+5白板武器，AB最多也就是20+7+5 = 32，这个可怜的AB面对中期敌人都不够用，更别说后期打BOSS了。所以我们需要依靠法术和职业能力来继续提升我们的AB，才能在挑战正常或者更高的难度时不会一直未命中。</span></p><h3 id='命中叠加的基本原则'><span>命中叠加的基本原则</span></h3><ol start='' ><li><span>大部分同名的加值不能叠加，只能取最高值。比如祝福术+1AB：士气，英雄气概+2AB：士气，同时用了这两个法术，最多也只能+2AB。</span></li><li><span>不同名的加值可以叠加。比如祝福术+1AB：士气，祈祷术+1AB：运气，同时用这两个法术，就可以叠加变成+2AB。</span></li><li><span>少部分同名的加值（其他），来源不同就可以叠加。比如夹击+2AB：其他，包抄+2AB：其他，这两者就可以叠加。</span></li><li><span>特例（</span><del><span>某些是BUG或房规</span></del><span>）：破敌可以额外+2AB：增强，与武器增强附魔+N AB：增强，这两者可以叠加。武器本身的增强附魔可以与魔战士的奥法武器附魔、</span><del><span>以及魔化武器和高等魔化武器叠加</span></del><span>（此BUG已经修复），比如+1武器，+1的奥法武器附魔，叠加变成+2武器——但是武器靠buff最多只能变成+5（算破敌就是+7）。</span></li><li><span>1.4版本以后的表现加值，很多都可以叠加（比如烛台守卫和夺命姿态），就是不知道什么时候修复了。</span></li></ol><h3 id='命中的常见加值名称以及常用来源'><span>命中的常见加值名称以及常用来源</span></h3><figure><table><thead><tr><th><span>加值名称</span></th><th><span>来源1（持续时间为轮级和以下或有次数限制）</span></th><th><span>来源2（容易常驻的或者永久）</span></th><th><span>剧情buff</span></th></tr></thead><tbody><tr><td><span>BAB</span></td><td><span>[战法转换]</span></td><td><span>职业等级</span></td><td>&nbsp;</td></tr><tr><td><span>其他</span></td><td><span>【辟邪斩】，【辟乱斩】，【正义烙印】，[加速术]，【疯狂之触】</span></td><td><span>“武器专攻”，【研究目标】，【宿敌】/【游侠羁绊】，冲锋，“常备不怠”，&lt;狙杀死神&gt;，&lt;红宝石勇士护腕&gt;，&lt;灰烬制造者&gt;、&lt;灵魂之灾&gt;戒指、&lt;女继承人之指&gt;、夹击、“包抄”、&lt;隆奈克的牺牲&gt;、&lt;高奏凯歌之戒&gt;、&lt;暴力呼召&gt;、&lt;嗅血斗篷&gt;、&lt;秩序长袍&gt;、&lt;苦楚结局之帽&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>环境</span></td><td>&nbsp;</td><td><span>&lt;出双入对&gt;×2，&lt;袭击者的腰带&gt;，&lt;杰作之锤&gt;，&lt;魔战士真义&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>属性（力量/敏捷等）</span></td><td>&nbsp;</td><td><span>详情见基础属性叠加的部分</span></td><td>&nbsp;</td></tr><tr><td><span>增强</span></td><td><span>【精魂武器附魔】，【力量之触】</span></td><td><span>&lt;+N武器&gt;，[魔化武器]，[高等魔化武器]，&lt;+N天武护符&gt;，[魔牙]，[高等魔牙]，【奥法武器附魔】，【武器盟誓】，[圣战之刃]、&lt;XXX破敌武器&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>士气</span></td><td>&nbsp;</td><td><span>[祝福术]、[英雄气概]、[高等英雄气概]、[英雄祈神]、[意气风发]、【惊世神力】</span></td><td>&nbsp;</td></tr><tr><td><span>表现</span></td><td><span>【为了吾王】，【烛台守卫】</span></td><td><span>【夺命姿态】，【勇气颂歌】，&lt;迫降护腕&gt;，&lt;（次级）神射护腕&gt;，[隼之型]，&lt;猛掷戒指&gt;，&lt;临危之戒&gt;，&lt;善念僧袍&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>运气</span></td><td><span>[祈祷术]，[神能]，[神圣恩典]，[神圣赞美诗]</span></td><td><span>&lt;幸运骰子&gt;、恶魔之灾（圣教军全满级以后的BUFF）</span></td><td>&nbsp;</td></tr><tr><td><span>洞察</span></td><td><span>【奥法精准】，[克敌机先]，【激励命令】</span></td><td><span>【狩猎目标】，&lt;尖锐视线透镜&gt;、&lt;位面引航&gt;戒指、&lt;快速应敌项链&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>崇圣</span></td><td><span>【忠诚祝福】，[荣光爆发]，【善良之触】</span></td><td><span>审判官的【审判】</span></td><td>&nbsp;</td></tr><tr><td><span>隐蔽</span></td><td><span>各种隐形/隐匿状态、[高等隐形术]，敌人处于目盲状态</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>狂暴术</span></td><td>&nbsp;</td><td><span>【狂暴战歌】/【血承狂怒】/【狂暴】</span></td><td>&nbsp;</td></tr><tr><td><span>武器训练</span></td><td>&nbsp;</td><td><span>【武器训练】+&lt;（次级）决斗手套&gt;/&lt;剑师之赐&gt;</span></td><td>&nbsp;</td></tr><tr><td><span>体型（大体型减AB，小体型加AB）</span></td><td><span>[正气如虹]</span></td><td><span>[变巨术]，[伟岸雄姿]，[缩小术]，[微缩雄姿]，[可怖外表]</span></td><td>&nbsp;</td></tr><tr><td><span>餐食</span></td><td>&nbsp;</td><td><span>恶魔杀手汤，诅咒拌肉饭</span></td><td>&nbsp;</td></tr><tr><td><span>天赋</span></td><td>&nbsp;</td><td><span>&lt;完壁&gt;、&lt;恶魔移植&gt;</span></td><td><span>恶魔改造</span></td></tr></tbody></table></figure><h3 id='举例-1'><span>举例</span></h3><h4 id='前期'><span>前期</span></h4><p><strong><span>注</span></strong><span>：第二章开始就有机会遇到旅行商人，前提是守夜人的察觉检定要特别高，根据主角的种族，会有不同的奖励。人类主角的话，会获得高等英雄气概卷轴，让聂纽学去，然后休息时抄录高等英雄气概卷轴即可，</span><strong><span>所以主角是人类的话，是可以提前享受到+4士气的高等英雄气概的</span></strong><span>。</span></p><p><strong><span>以7、8、9级分别举例</span></strong><span>：</span></p><h5 id='7级'><span>7级</span></h5><ul><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#斩矛剑圣'><span>斩矛剑圣</span></a></p><ul><li><span>常驻AB = 5BAB + 10力量调整值 + 1武器专攻（斩矛）+3秘银震电斩矛（+2秘银震电斩矛，奥法武器附魔——只用锐锋，</span><del><span>魔化武器</span></del><span>） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 + 2破敌= </span><strong><span>25</span></strong><span>，这里要注意，只有圣武士/魔战士/精魂猎手才能在5级有锐锋（其他职业至少要8级才能出精通重击，战斗祭祀4级就有锐锋但是武器附魔时间太短），前期的重击率已经远超其他职业了（有祝福武器可以重击自动确认），搭配包抄的重击借机，效果拔群。</span></li></ul></li></ul><ul><li><p><span>爆发AB = 25 + 5洞察（奥法精准）+2隐蔽（高等隐形术）= 32</span></p></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#原怒者'><span>原怒者</span></a></p><ul><li><span>常驻AB = 7BAB + 8力量调整值 + 1碎虫者（+1碎虫者，</span><del><span>魔化武器</span></del><span>） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 +2狂暴术（血承狂暴）+2表现（夺命姿态） + 2破敌 = </span><strong><span>26</span></strong></li><li><span>爆发AB = 27 + 2隐蔽（高等隐形术） = 28，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#突变斗士双手武器-斩矛流'><span>突变斗士（双手武器-斩矛流）</span></a></p><ul><li><span>常驻AB = 7BAB + 10力量调整值 + 1武器专攻（斩矛）+ 2秘银震电斩矛 + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 + 2破敌 + 2武器训练= </span><strong><span>27</span></strong></li><li><span>爆发AB = 27 + 2隐蔽（高等隐形术）= 29</span></li></ul></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#魔武双修天使先知'><span>魔武双修天使先知</span></a></p><ul><li><span>常驻AB = 5BAB + 7力量调整值 + 1武器专攻（斩矛）+2秘银震电斩矛 + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 + 2破敌 + 2神圣恩典  = </span><strong><span>23</span></strong></li><li><span>注意先知自身拥有神使灵光，如果敌人豁免失败，可以减少敌人2AB和2AC和2豁免。</span></li><li><span>爆发AB = 23 +2隐蔽（高等隐形术）= 25</span></li></ul></li></ul><h5 id='8级'><span>8级</span></h5><ul><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#斩矛剑圣'><span>斩矛剑圣</span></a></p><ul><li><span>常驻AB = 6BAB + 10力量调整值 + 1武器专攻（斩矛）+3秘银震电斩矛（+2秘银震电斩矛，奥法武器附魔——用锐锋，</span><del><span>魔化武器，+2高等魔化武器</span></del><span>） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 + 2破敌 = </span><strong><span>26</span></strong></li></ul></li></ul><ul><li><p><span>爆发AB = 26 + 5洞察（奥法精准）+2隐蔽（高等隐形术） = 33，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。还有祈福可以双骰取高，对于40AC的敌人（自己30AB），相当于增加5AB，且重击率变为51%。再搭配科米丽雅的邪眼-4AC，在眷泽城都是乱杀了。</span></p></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#原怒者'><span>原怒者</span></a></p><ul><li><span>常驻AB = 8BAB + 8力量调整值 + 2碎虫者（+1碎虫者，</span><del><span>魔化武器</span></del><span>，+2高等魔化武器） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 3猛力攻击 -1体型 +2狂暴术（血承狂暴）+3表现（夺命姿态）  + 2破敌 = </span><strong><span>28</span></strong></li><li><span>爆发AB = 30 + 2隐蔽（高等隐形术） = 30，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#突变斗士双手武器-斩矛流'><span>突变斗士（双手武器-斩矛流）</span></a></p><ul><li><span>常驻AB = 8BAB + 10力量调整值 + 1武器专攻（斩矛）+ 2秘银震电斩矛 + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 3猛力攻击 -1体型 + 2破敌 + 2武器训练= </span><strong><span>27</span></strong></li><li><span>爆发AB = 27 + 2隐蔽（高等隐形术） = 29，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。还有祈福可以双骰取高，对于40AC的敌人（自己30AB），相当于增加5AB，且重击率变为51%。再搭配科米丽雅的邪眼-4AC，在眷泽城都是乱杀了。</span></li></ul></li></ul><h5 id='9级'><span>9级</span></h5><ul><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#斩矛剑圣'><span>斩矛剑圣</span></a></p><ul><li><span>常驻AB = 6BAB + 10力量调整值 + 1武器专攻（斩矛）+5秘银震电斩矛（+2秘银震电斩矛，奥法武器附魔） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2猛力攻击 -1体型 + 2破敌 = </span><strong><span>28</span></strong></li></ul></li></ul><ul><li><p><span>爆发AB = 28 + 5洞察（奥法精准）+2隐蔽（高等隐形术） = 35，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。还有祈福可以双骰取高，对于40AC的敌人（自己30AB），相当于增加5AB，且重击率变为51%。再搭配科米丽雅的邪眼-4AC，在眷泽城都是乱杀了。</span></p></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#原怒者'><span>原怒者</span></a></p><ul><li><span>常驻AB = 9BAB + 8力量调整值 + 2碎虫者（+1碎虫者，</span><del><span>魔化武器</span></del><span>，+2高等魔化武器） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 3猛力攻击 -1体型 +2狂暴术（血承狂暴）+3表现（夺命姿态）  + 2破敌 = </span><strong><span>29</span></strong></li><li><span>爆发AB = 30 + 2隐蔽（高等隐形术） = 31，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul></li><li><p><a href='https://github.com/ZJUZBW/Wotr-BD-LR#突变斗士双手武器-斩矛流'><span>突变斗士（双手武器-斩矛流）</span></a></p><ul><li><span>常驻AB = 9BAB + 10力量调整值 + 1武器专攻（斩矛）+ 2秘银震电斩矛 + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 3猛力攻击 -1体型 + 2破敌 + 3武器训练= </span><strong><span>29</span></strong></li><li><span>爆发AB = 29 + 2隐蔽（高等隐形术） = 31，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul></li></ul><p><strong><span>再举例一个队伍大腿——8级空降流雷吉尔（BD在友情链接里）【现在附伤BUG修复的差不多了，不是大腿】</span></strong></p><p><span>8级雷吉尔的AB：</span></p><ul><li><span>常驻AB = 8BAB + 7敏捷调整值 + 1武器专攻（侏儒勾锤）+2高尚裁决（+2高尚裁决，</span><del><span>魔化武器，+2高等魔化武器</span></del><span>） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 + 2体型 +2狂暴术（血承狂暴） + 2武器训练（1武器训练+次级决斗手套）- 2防御式攻击和鹤形拳 + 2破敌 = 31（主手34，副手没破敌是32）</span></li><li><span>爆发AB = 31 + 2隐蔽（高等隐形术）+ 4辟乱斩 = 37（主手37，副手没破敌是35），这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul><p><span>敏系缩小术对比力系变巨术，主要是敏系AB和AC高，力系伤害高，侏儒种族天生就是小体型，所以AB和AC+1。像雷吉尔正常来说这样加点又不出食人鱼打击，基本上没啥伤害，</span><del><span>但是靠高尚裁决+附伤流BUG，可以说伤害又高AB又高，比同期不靠BUG玩法的主角菜刀（至少在神话3之前）都厉害一些</span></del><span>。而且因为是空降队友，不需要像主角一样考虑前期的打法，所以玩起来特别舒服（毕竟直接跳过弱势期了）。</span></p><p><strong><span>再举例一个席拉的——为什么总有人把这套席拉的DB当成纯T来玩？（BD在友情链接里）</span></strong></p><p><span>7级席拉的AB（不变巨）</span></p><ul><li><span>常驻AB = 6BAB + 6力量调整值 + 1骤然巨力（+1骤然巨力，</span><del><span>魔化武器</span></del><span>，武器附魔锐锋） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2防御式攻击 + 2表现（迫降护腕） + 2破敌 = 22</span></li><li><span>爆发AB = 22 + 2隐蔽（高等隐形术）+5辟邪斩 = 29，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul><p><span>8级席拉的AB（不变巨）</span></p><ul><li><span>常驻AB = 7BAB + 6力量调整值 + 2心灵穿刺者（+2心灵穿刺者，</span><del><span>魔化武器，+2高等魔化武器</span></del><span>） + 1加速术 + 2士气（英雄气概） + 2夹击 + 2包抄 - 2防御式攻击 +2表现（迫降护腕） + 2破敌 = 24</span></li><li><span>爆发AB = 24 + 2隐蔽（高等隐形术）+5辟邪斩 = 31，这里敌人如果没有直觉闪避、盲斗、识破隐形或真知术，基本上AC都会失去敏捷加值。</span></li></ul><p><strong><span>【注：这里队友配置为席拉、科米丽雅、索希尔和聂纽，7级出高等隐形术和圣战之刃，8级祈福、行动自如和+2高等魔化武器，迫降护腕给席拉堆AC了】</span></strong></p><h4 id='中期'><span>中期</span></h4><p><strong><span>鉴于还有人感觉取乐的黑暗非常难打，我这个给一个菜刀队通用队伍配置（席拉、科米丽雅、岱兰和聂纽，爱露莎蕾和主角斩矛剑圣；或者席拉、科米丽雅，爱露莎蕾，雷吉尔/兰恩和主角奥术/神术+聂纽/岱兰）</span></strong><span>，这里要注意记一个闪光尘来破除取乐的黑暗的高等隐形术（因为新版心灵屏障免疫真知术、思维侦测和识破隐形咯），或者干脆就高等解除魔法×N来解除他的心灵屏障+预警才行。</span></p><p><span>第三章到这里基本上可以有15级4神话，我这里就以15级来讲——不考虑神话道途和各种剧情buff，只会少算不会多算。</span></p><p><strong><span>15级斩矛剑圣：</span></strong></p><ul><li><span>力量：20 + 2种族 + 6巨力腰带 + 6伟岸雄姿 + 4变化自如 = 38</span></li><li><span>常态AB = 11BAB + 14力量调整值 + 5斩矛（说话武器菲尼安+奥法武器增强） + 1武器专攻（斩矛）+1加速术 + 4士气（高等英雄气概） + 2夹击 + 2包抄 - 3猛力攻击 -2体型 + 1餐食（诅咒拌肉饭）+2增强（破敌） = 38</span></li><li><span>爆发AB = 38 + 1崇圣（荣光爆发）+ 9正义烙印 + 1运气（祈祷术或幸运骰子）+4宿敌（游侠羁绊） = 53，</span></li><li><span>因为剑圣开启远见打击（战前或者第一轮）+空间斩（第一轮或者第二轮）以后，直接打的措手不及+接触攻击，还有萨满给祈福（双骰取高）、邪眼减4AC和爱露莎蕾的狩猎目标+狩猎手套减2AC，这个AB打取乐的黑暗是必中的。用骷髅或者虫群或者席拉屹立不倒拉住他，几轮稳定砍死。而且游戏里还有BUG，导致光能武器和空间斩可以叠加生效，就算是不公平难度，AB都溢出了几十点。</span></li></ul><p><strong><span>15级科米丽雅：</span></strong></p><ul><li><span>敏捷：20 + 2种族 + 6敏捷腰带 + 2缩小术 = 30</span></li><li><span>常态AB = 11BAB + 10敏捷调整值 + 5细剑 + 1武器专攻（细剑）+1加速术 + 4士气（高等英雄气概） + 2夹击 + 2包抄 + 1体型 + 1餐食（诅咒拌肉饭）+2增强（破敌） = 40</span></li><li><span>爆发AB = 40 + 1崇圣（荣光爆发）+ 5运气（神能）+ 9正义烙印 +4宿敌（游侠羁绊） = 59，基本上打不中，给巫术就好咯。</span></li></ul><p><strong><span>15级爱露莎蕾：</span></strong></p><p><span>敏捷：23 + 6敏捷腰带 + 2缩小术 +4变化自如 = 35</span></p><p><span>常态AB = 15BAB + 12敏捷调整值 + 3邪恶异界生物破敌弓 + 1武器专攻（长弓）+1加速术 + 4士气（高等英雄气概） + 2近程射击 + 1隼之型 + 1表现（次级神射手护腕） + 1体型 + 1餐食（诅咒拌肉饭） - 4致命瞄准 = 38</span></p><p><span>爆发AB = 38 +1崇圣（荣光爆发）+ 9正义烙印 + 1运气（祈祷术） + 2洞察（狩猎目标）+ 8宿敌 = 59</span></p><p><strong><span>15级雷吉尔</span></strong><span>：</span></p><p><span>敏捷：20 + 6敏捷腰带 + 2缩小术 = 28</span></p><p><span>常态AB = 15BAB + 9敏捷 + 5高尚裁决 + 1武器专攻（侏儒勾锤）+1加速术 + 4士气（高等英雄气概）  + 2夹击 + 2包抄 + 2体型 + 1餐食（诅咒拌肉饭）+ 3武器训练（1武器训练+决斗手套）+ 2狂暴术（血承狂暴）+2嗅血斗篷 = 49</span></p><p><span>爆发AB = 49 + 1崇圣（荣光爆发）+ 9正义烙印 + 1运气（祈祷术）+ 4辟乱斩 + 4宿敌（游侠羁绊） = 68，</span></p><p><strong><span>15级原怒突变斗士兰恩（BD在友情链接）</span></strong><span>：</span></p><p><span>力量：18 +2种族 + 6巨力腰带 + 6伟岸雄姿 + 4诱变剂 = 36</span></p><p><span>常态AB = 15BAB + 13力量 + 3善之痛击（主角不是菜刀，就给兰恩用菲尼安） + 2（高等）武器专攻 + 1加速术 + 4士气（高等英雄气概）  + 2夹击 + 2包抄 - 2体型 + 1餐食（诅咒拌肉饭）+ 4武器训练（2武器训练+剑师之赐）+ 2狂暴术（血承狂暴）+2嗅血斗篷 +1恶魔愤恨 = 50</span></p><p><span>爆发AB = 49 + 1崇圣（荣光爆发）+ 9正义烙印 + 1运气（祈祷术）+ 4宿敌（游侠羁绊） = 65，</span></p><p><strong><span>以上都不是极限，因为还有神话道途加成以及卷轴都没考虑在内。</span></strong></p><p><strong><span>注</span></strong><span>：如果带的索希尔（痴迷疯狂双持久），此时还能给队友提供7【崇圣】+7【其他（疯狂）】+攻击检定双骰取高，这样的话不公平全剧情队友也可以打咯。</span></p><p>&nbsp;</p><h2 id='防御的堆叠'><span>防御的堆叠</span></h2><p><strong><span>注</span></strong><span>：一个BD能不能抗不是只看AC，而是要搭配一些其他的玩意：避灾+朦胧术/移位术/高等隐形术+镜影术，高先攻，高豁免和有各种负面状态免疫。</span></p><h3 id='人物最基本的防御等级ac）构成'><span>人物最基本的防御等级（AC）构成</span></h3><p><span>基础10 + 敏捷调整值 + 盔甲加值 + 盾牌加值 + ... ...</span></p><p><span>在所有的XX等级里，AC是最为特殊的，因为它与人物等级没有直接相关，你就算是20级职业者，如果无buff无装备，AC基本就是10+敏捷加值，十几点AC在同样高等级的敌人面前就像砧板上的鱼肉。所以AC是一定要靠装备和buff来叠加的，其中buff尤其关键，前期没buff不可能堆多少AC。</span></p><p><span>防御等级不是一成不变的，抵抗不同的攻击，是否处于措手不及状态，都会影响到你的当前运用的AC。防御等级大致可以分成：全防御等级、接触防御、措手不及防御、措手不及+接触防御。了解到这个知识以后，可以据此来规划某个强力BOSS的打法。</span></p><p><span>比如BOSS-1号的全防御90，措手不及防御75，接触防御50，那么用接触攻击就非常容易解决。比如BOSS-2号的全防御90，措手不及防御50，接触防御70，那么想办法让其陷入措手不及状态也是一个不错的解决思路。</span></p><p><strong><span>接触攻击的方法：</span></strong><span>[XXX射线]、【炼金炸弹】（炼金术士）、【空间斩】（魔战士）、能量念袭（操念使）</span></p><h3 id='敌人陷入措手不及的办法'><span>敌人陷入措手不及的办法</span></h3><ol start='' ><li><span>诡术师的【即兴偷袭】；</span></li><li><span>魔战士的【远见打击】；</span></li><li><span>敌人战栗+粉碎防御——如果敌人免疫战栗/心智，</span><del><span>除了天使道途4环的斥退亵渎</span></del><span>就没啥办法了；</span></li><li><span>高等隐形术——如果敌人有识破隐形、盲斗、直觉闪避和真知术等就没法了，靠法术的可以先解除魔法或者靠心灵屏障无视敌人预言系法术；</span></li><li><span>敌人先攻检定低于你——如果敌人有直觉闪避就不会因此措手不及。</span></li><li><span>敌人AC失去敏捷加值的其他情况，比如敌人陷入麻痹、无助、畏缩、震慑等。</span></li></ol><p><strong><span>防御等级叠加的基本原则：</span></strong></p><ol start='' ><li><span>大部分同名的加值不能叠加，只能取最高值。比如[虔诚护盾]+2AC：偏斜，&lt;+2偏斜戒指&gt; +2AC：偏斜，同时用了这两者，最多也只能+2AB。</span></li><li><span>不同名的加值可以叠加。比如[虔诚护盾]+2AC：偏斜，[树肤]+2AC：天生防御增强，同时用这两个法术，就可以叠加变成+4AC。</span></li><li><span>少部分同名的加值（其他、</span><del><span>环境</span></del><span>、闪避和天生防御），来源不同就可以叠加。比如[龙形III]+6AC：天生防御， [可怖外表]+6AC：天生防御，【蜥蜴魔宠】+1AC：天生防御，这三者就可以叠加【</span><strong><span>注：目前最新版本，法术带来的天生防御（比如伟岸和龙型）不再相互叠加；DLC4新增的骨拳术例外</span></strong><span>】。或者防御式攻击+3AC：闪避，“闪避” +1AC：闪避，这两者可以叠加。</span></li></ol><h3 id='防御等级的常见加值名称以及常用来源'><strong><span>防御等级的常见加值名称以及常用来源：</span></strong></h3><p><img src="https://aaathl.oss-cn-hangzhou.aliyuncs.com/img/image-20220917124609376.png" referrerpolicy="no-referrer" alt="image-20220917124609376"></p><p><span>注：目前天使光环的AC加值已经改成神话加值。</span></p><p><span>可以看到表格里20级先觉斗士满buff，不算神话道途加成和剧情buff，不点任何防御专长，就天然有82点全防御，73措手不及防御，48接触防御。同时伤害有神话道途的加成也非常可观，又有无限狂暴，可以说是菜刀扛把子——野蛮人+武僧的合体——这个职业基本上不用兼职，成长性非常强。</span></p><h3 id='举例-2'><span>举例</span></h3><p><strong><span>表格里只是简单计算，这里举几个实例——分别是席拉重甲T（代表重甲重盾T，这里举例的蜥蜴魔宠最好是换成野兔魔宠，4先攻比1点AC重要）、敏T剑圣（1僧1巫1活2圣武士N剑圣，专长鹤型拳流，代表敏T极致AC——不卡决斗家和剑圣的bug）、力双手突变斗士（表示正常力双手职业——无护盾术）、斩矛剑圣（20剑圣，代表最高AC的力双手输出，不出任何防御专长）</span></strong><span>、新增一个满配动物伙伴的AC（正常来说动物伙伴不配吃这些资源），省的有人成天虚空打靶。</span></p><p><span>分别按照6级，12级和16级来算好了，席拉正常不会变巨/缩小。不计算白鹤亮翅的“伪AC”，不计算主角专属幸运护腕，不计算剧情队友初始职业以外的buff。6级开始计算常驻加速术（第二章开局就两个延时法杖给6次加速术，基本上用完就休息）。</span></p><p><strong><span>注</span></strong><span>：这里举例的蜥蜴魔宠，建议都换成野兔魔宠，举例装备中有DLC1隐藏奖励装备以及DLC3的装备。因为不考虑道途，我这里只会少算不会多算的。</span></p><h4 id='6级'><span>6级</span></h4><p><strong><span>6级的标准装备：霜护、半身甲+1、重盾+2、第二章可以拿到+2精金全身甲、+7无暇防护戒指、迫降护腕，自己做一下加减法即可。</span></strong></p><p><strong><span>6级席拉（4圣武士1巫师1鳞拳）：</span></strong></p><ul><li><strong><span>45/49AC</span></strong><span>（辟邪斩以后变成47/49） = 10基础 + 1敏调 + 11盔甲（+2精金全身甲）+4盾牌（重盾+2）+5天生防御（蜥蜴魔宠、冻皮、霜护）+3天生防御增强（树肤）+3偏斜（虔诚护盾）/7防护戒指+1闪避 +1盾牌专攻 +4防御式攻击（鹤型拳）+2崇圣（天堂/圣能面纱）</span></li></ul><p><strong><span>6级敏T剑圣（1僧1巫1活2圣武士1剑圣）：</span></strong></p><ul><li><strong><span>52/56AC</span></strong><span>（辟邪斩以后变成54/56） = 10基础 + 4盔甲（法师护甲）+4盾牌（护盾术）+7天生防御（蜥蜴魔宠、冻皮、霜护、敏捷诱变剂）+3天生防御增强（树肤）+3偏斜（虔诚护盾）/7防护戒指+1闪避+4魅力+10敏捷+1体型+4防御式攻击（鹤形拳）+1智调</span></li></ul><p><strong><span>6级斩矛剑圣（6剑圣、变巨术）：</span></strong></p><ul><li><strong><span>31AC</span></strong><span> = 10基础 + 4盔甲（法师护甲）+4盾牌（护盾术）+3天生防御增强（树肤）+3偏斜（虔诚护盾）+1闪避+2敏捷+5智力-1体型</span></li></ul><p><strong><span>6级突变斗士（变巨术）：</span></strong></p><ul><li><strong><span>26AC</span></strong><span> = 10基础 + 9盔甲（半身甲+1）+2天生防御（力量诱变剂）+3天生防御增强（树肤）+3偏斜（虔诚护盾）-1体型</span></li></ul><p><strong><span>6级动物伙伴</span></strong><span>（举例的是三角龙，野猪比三角龙低1，花豹点出闪避比三角龙AC高1点但是不能穿甲反而少了AC，狗/狼比三角龙少3点，马比三角龙少6点）：</span></p><ul><li><strong><span>43（47）AC</span></strong><span> = 10基础 + 9天生防御+6天生防御（动物伙伴等级奖励）+3天生防御增强（树肤）+4法师护甲+3偏斜（虔诚护盾）+4敏捷+1加速术+3防御式攻击+2迫降护腕（+4护盾术），正常来说是不会给吃护盾术卷轴的，因为购买的卷轴持续时间不够，自己做的话不如做动物异变/腐烂幻象。</span></li><li><span>七级体型变大，还有解谜给的热身甲， </span><strong><span>47（51）AC</span></strong><span> = 10基础 + 9天生防御+3天生防御（体型奖励）+6天生防御（动物伙伴等级奖励）-1体型+3天生防御增强（树肤）+6热身甲+3偏斜（虔诚护盾）+3敏捷+3防御式攻击+2迫降护腕（+4护盾术）+1加速术</span></li><li><span>需要注意的是，动物伙伴一旦开了防御式攻击，基本上就没剩下多少AB，变成纯T，有动物异变以后AC再+1。</span></li></ul><h4 id='12级'><span>12级</span></h4><p><mark><span>注：新版本把DLC3珍宝岛商人的&lt;+5装备&gt;延后了，不再是第三章可以直接购买！！！！！！，所以对应的装备要降级，&lt;+5盾牌&gt;变成&lt;+3盾牌&gt;（用魔化防具即可），&lt;+5坐骑全身甲&gt;变成&lt;+3坐骑全身甲&gt;（在DLC4醋栗谷商人处购买），&lt;+7盔甲护腕&gt;变成&lt;+5盔甲护腕&gt;了</span></mark></p><p><strong><span>12级的标准装备：霜护、虫壳甲+2（秘银全身甲+2）、轻丝袍、迫降护腕、+7无暇防护戒指、+5重盾、袍泽头盔、阿罗登剑鞘、13级以后有伟岸+缩小额外会给7AC（自己加上就行）、+6智力头环、+7盔甲护腕、+6敏捷腰带、同仇链甲、出双入对、幸运骰子、炽热玉米卷饼+4全属性、结界大师护符</span></strong></p><p><strong><span>12级席拉（10圣武士1巫师1鳞拳，不变体型，有伟岸雄姿再缩小以后+7AC）：</span></strong></p><ul><li><span>面板： </span><strong><span>54/57AC</span></strong><span>= 10基础 + 12盔甲（虫壳甲+2，配合魔化防具）+3敏捷+5盾牌（+3重盾）+4天生防御（冻皮、霜护）+5天生防御增强（树肤）+4偏斜（虔诚护盾）/7防护戒指+1闪避+1盾牌专攻+1闪避（轻丝袍）+1加速术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>战斗中： </span><strong><span>62/65</span></strong><span>（辟邪斩后71/74）= 54/57+4防御式攻击（鹤型拳）+2崇圣（天堂/圣能面纱）/8崇圣（阿罗登剑鞘+辟邪斩）+2表现（迫降护腕）</span></li></ul><p><strong><span>12级敏T剑圣（1僧1巫1活2圣武士7剑圣、缩小术，有伟岸雄姿再缩小以后+6AC）：</span></strong></p><ul><li><span>面板：</span><strong><span>74/77</span></strong><span> = 10基础+ 8盔甲（大法师护甲）+4盾牌（护盾术）+6天生防御（冻皮、霜护、敏捷诱变剂）+5天生防御增强（树肤）+4偏斜（虔诚护盾）/7防护戒指+1闪避+6魅力+13敏捷+7智力+1体型+1闪避（轻丝袍）+1加速术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>战斗中：</span><strong><span>80/83</span></strong><span> （辟邪斩以后变成86/89）=74/77 +4防御式攻击（鹤形拳）+2表现（迫降护腕）+6崇圣（阿罗登剑鞘+辟邪斩）</span></li></ul><p><strong><span>12级斩矛剑圣（12剑圣，变巨术，有伟岸雄姿以后+6AC）：</span></strong></p><ul><li><span>面板：</span><strong><span>40AC</span></strong><span> = 10基础 + 5盔甲（+5盔甲护腕）+4盾牌（护盾术）+5天生防御增强（树肤）+3偏斜（虔诚护盾）+3敏捷+6智力-1体型 +1加速术+2环境（出双入对）+1学徒法袍+1结界大师护符</span></li></ul><p><strong><span>12级突变斗士（变巨术，有伟岸雄姿以后+6AC）：</span></strong></p><ul><li><span>面板：</span><strong><span>40AC</span></strong><span> = 10基础 + 9盔甲（+3同仇链甲）+4敏捷+2天生防御（力量诱变剂）+5天生防御增强（树肤）+4偏斜（虔诚护盾）-1体型+1加速术+3闪避（飞翼）+2环境（出双入对）+1结界大师护符</span></li></ul><p><strong><span>12级动物伙伴</span></strong><span>（举例的是三角龙为代表的天防穿甲骑乘流，野猪比三角龙低1，狗比三角龙低4，狼比三角龙低5，马比三角龙少8点；花豹无甲代表的无甲流/变形流，狼/狗/迅猛龙比花豹少4AC）</span></p><ul><li><span>三角龙 </span><strong><span>70（74）AC</span></strong><span> = 10基础 + 9天生防御+3天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）+2天生防御（动物异变）-1体型+5天生防御增强（树肤）+12&lt;+3坐骑全身甲&gt;+1敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>主力花豹无甲+动物异变，有神话伴兽+卡智力头环主敏再加6敏捷（3AC）， </span><strong><span>68（72）AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）++2天生防御（动物异变）+5天生防御增强（树肤）+5&lt;+5防御护腕&gt;+11敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>主力花豹+变形术（小型风元素），有神话伴兽+卡智力头环主敏再加6敏捷（3AC），</span><strong><span>71（75）AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）+2天生防御（变形术）+1体型+5天生防御增强（树肤）+5&lt;+5防御护腕&gt;+13敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li></ul><p><strong><span>13级动物伙伴</span></strong><span>（举例的是三角龙为代表的天防穿甲骑乘流，野猪比三角龙低1，狗比三角龙低4，狼比三角龙低5，马比三角龙少8点；花豹无甲代表的无甲流/变形流，狼/狗/迅猛龙比花豹少4AC）</span></p><ul><li><span>三角龙 </span><strong><span>73（77）AC</span></strong><span> = 10基础 + 9天生防御+3天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）+6伟岸雄姿-2体型+5天生防御增强（树肤）+12&lt;+5坐骑全身甲&gt;+1敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>主力花豹无甲+伟岸雄姿，有神话伴兽+卡智力头环主敏再加6敏捷（3AC）， </span><strong><span>72（76）AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）+6伟岸雄姿-1体型+5天生防御增强（树肤）+5&lt;+5防御护腕&gt;+12敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>主力花豹+高等变形术（风元素），有神话伴兽+卡智力头环主敏再加6敏捷（3敏调），</span><strong><span>72（76）AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+10天生防御（动物伙伴等级奖励）+4天生防御（高等变形术）-1体型+5天生防御增强（树肤）+5&lt;+5防御护腕&gt;+14敏调+4偏斜（虔诚护盾）+1加速术+4防御式攻击（鹤型拳）+1闪避+2迫降护腕（+4护盾术卷轴）+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li></ul><h4 id='16级'><span>16级</span></h4><p><strong><span>16级的标准装备（刚进第四章）：霜护、虫壳甲+2（秘银全身甲+2）、轻丝袍、迫降护腕、+7无暇防护戒指、+5重盾、袍泽头盔、阿罗登剑鞘、13级以后有伟岸+缩小额外会给7AC（自己加上就行）、+6智力头环、+6盔甲护腕、+6敏捷腰带、同仇链甲、出双入对、残缺诡术师、炽热玉米卷饼+4全属性、结界大师护符、+8无暇极致体能腰带（这个就不给T了，给大力哥）、无敌风暴、含羞百合头盔、隆奈克的牺牲</span></strong><span>，17级有预警+2AC【洞察】，席拉的腰带位也可以用&lt;蜥蜴尾&gt;（用可怖外表就能触发，这样第一轮+8AC【环境】，防御端就稳得不得了），大力哥是剑圣的话，头盔可以再带&lt;含羞百合&gt;+2AC。</span></p><p><strong><span>16级席拉（11圣武士1巫师1鳞拳1先知2活体、用可怖外表、泰坦石任务以后有+2魅力书可以给席拉再加2AC）：</span></strong></p><ul><li><span>面板：</span><strong><span>76/79AC</span></strong><span> = 10基础 + 9盔甲（大法师护甲）+11敏捷+11魅+4盾牌（护盾术）+13天生防御（蜥蜴魔宠、冻皮、霜护、神药、可怖外表）+5天生防御增强（树肤）+4偏斜（虔诚护盾）/7防护戒指+1闪避+1闪避（轻丝袍）+3士气（袍泽头盔）-1体型+1加速术+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>战斗中： 84/87（辟邪斩以后93/96） = 72/75+4防御式攻击（鹤型拳）+2崇圣（天堂/圣能面纱）/11崇圣（阿罗登剑鞘+辟邪斩）+2表现（迫降护腕）</span></li></ul><p><strong><span>16级敏T剑圣（1僧1巫1活2圣武士11剑圣、先伟岸再缩小）：</span></strong></p><ul><li><span>面板：</span><strong><span>83/86AC</span></strong><span> = 10基础+ 9盔甲（大法师护甲）+4盾牌（护盾术）+13天生防御（蜥蜴魔宠、冻皮、霜护、敏捷诱变剂、伟岸雄姿）+5天生防御增强（树肤）+4偏斜（虔诚护盾）/7防护戒指+1闪避+7魅力+13敏捷+7智力+1体型+1闪避（轻丝袍）+1加速术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></li><li><span>战斗中：89/92（辟邪斩以后96/99） = 83/86 +4防御式攻击（鹤形拳）+2表现（迫降护腕）+7崇圣（阿罗登剑鞘+辟邪斩）</span></li></ul><p><strong><span>16级斩矛剑圣（16剑圣、用伟岸雄姿）：</span></strong></p><ul><li><span>面板：</span><strong><span>56AC</span></strong><span> = 10基础 + 9盔甲（大法师护甲）+4盾牌（护盾术）+6天生防御（伟岸雄姿）+5天生防御增强（树肤）+4偏斜（虔诚护盾）+7敏捷+8智力 -2体型+1加速术+1学徒法袍+2环境（出双入对）+1结界大师护符。盔甲位可以穿卷腹获得一些加成（比如神圣护卫卷腹，+4全豁免【崇圣】），吃了全属性药AC+2，有了+8智力头AC+1，有亵渎之礼AC+2。</span></li></ul><p><strong><span>16级突变斗士（伟岸）：</span></strong></p><ul><li><span>面板：</span><strong><span>53AC</span></strong><span> = 10基础 + 14盔甲（无敌风暴）+5盾牌（无敌风暴）+1敏捷+12天生防御（高等力量和敏捷诱变剂、伟岸雄姿、含羞百合头盔）+5天生防御增强（树肤）+4偏斜（虔诚护盾）-2体型+1加速术+2环境（出双入对）+1结界大师护符，穿甲的话AC基本上到顶了。</span></li></ul><p><strong><span>16级动物伙伴</span></strong><span>（举例的是三角龙为代表的天防穿甲骑乘流，野猪比三角龙低1，狗比三角龙低4，狼比三角龙低5，马比三角龙少8点；花豹无甲代表的无甲流/变形流，狼/狗/迅猛龙比花豹少4AC）</span></p><ul><li><p><span>三角龙面板 </span><strong><span>74AC</span></strong><span> = 10基础 + 9天生防御+3天生防御（体型奖励）+12天生防御（动物伙伴等级奖励）+6伟岸雄姿-2体型+5天生防御增强（树肤）+14&lt;+4坐骑全身甲&gt;+1敏调+4偏斜（虔诚护盾）+1加速术+1闪避+4护盾术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></p><p><span>战斗中 </span><strong><span>80</span></strong><span> = 74+4防御式攻击（鹤型拳）+2迫降护腕</span></p></li><li><p><span>主力花豹无甲+伟岸雄姿，有神话伴兽+卡智力头环主敏再加7敏捷（4敏调），面板 </span><strong><span>73AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+12天生防御（动物伙伴等级奖励）+6伟岸雄姿-1体型+5天生防御增强（树肤）+6&lt;+6防御护腕&gt;+12敏调+4偏斜（虔诚护盾）+1加速术+1闪避+4护盾术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></p><p><span>战斗中 </span><strong><span>79</span></strong><span> = 73+4防御式攻击（鹤型拳）+2迫降护腕</span></p></li><li><p><span>主力花豹+高等变形术（风元素），有神话伴兽+卡智力头环主敏再加7敏捷（4敏调），面板 </span><strong><span>73AC</span></strong><span> = 10基础 + 4天生防御+2天生防御（体型奖励）+12天生防御（动物伙伴等级奖励）+4天生防御（高等变形术）-1体型+5天生防御增强（树肤）+6&lt;+7防御护腕&gt;+14敏调+4偏斜（虔诚护盾）+1加速术+1闪避+4护盾术+3袍泽头盔+2环境（出双入对）+1幸运骰子+1结界大师护符</span></p><p><span>战斗中 </span><strong><span>79</span></strong><span> = 73+4防御式攻击（鹤型拳）+2迫降护腕</span></p></li></ul><h2 id='豁免的堆叠'><span>豁免的堆叠</span></h2><p><strong><span>豁免等级的作用</span></strong><span>：豁免等级一般就是用来对抗敌对法术、类法术和超自然能力的（——后面统称法术）。某些文字剧情里也需要用到。</span></p><p><strong><span>豁免检定</span></strong><span>：对应豁免等级+D20 ≥ DC，则豁免成功，根据法术的类型会有不同的效果（看法术的描述）。</span></p><p><span>	</span><span>豁免和AC一样，越高越好。如果需要用法术针对性控制某个敌人，那么选择那些对抗敌人低豁免的法术非常好用，比如前期强力的敌人审判官都是低反射成长，用油腻术就可以造成不错的控制；比如敌对法师一般都是强韧较低，那么用臭云术之类的就可以轻松制服；敌对野蛮人一般都是低意志和低反射，在有准备的法师面前都不堪一击。</span></p><p><strong><span>人物最基本的豁免等级（AC）构成</span></strong><span>：职业加成 + 属性加值 + 抗力加值 + 士气加值 + ... ...</span></p><h3 id='关于职业加成的豁免等级计算'><span>关于职业加成的豁免等级计算</span></h3><p><strong><span>基础职业（20级的职业）：</span></strong></p><ul><li><span>高豁免成长：2+1/2职业等级</span></li><li><span>低豁免成长：1/3职业等级</span></li><li><span>基础职业20级加12豁免（高成长）或者6豁免（低成长）</span></li></ul><p><strong><span>进阶职业（10级的职业）：</span></strong></p><ul><li><span>高豁免成长：1/2（职业等级+1）</span></li><li><span>低豁免成长：1/3（职业等级+1）</span></li><li><span>进阶职业10级加5豁免（高成长）或者3豁免（低成长）</span></li></ul><p><strong><span>注：向下取整，不同职业的小数部分不叠加。</span></strong></p><p><span>前期兼职几个高豁免成长的基础职业，就会极大的提高我们的豁免等级。比如传统武僧是全豁免高成长，兼职第一级就会+2全豁免，兼职2级圣武士可以加3意志、3强韧和神恩（魅力加全豁免）；比如战士属于高强韧成长、低意志和反射成长，1级战士只有2强韧。</span></p><h3 id='关于属性加成的豁免'><span>关于属性加成的豁免</span></h3><ul><li><span>感知调整值：影响意志、影响全豁免（烛台守卫，按照使用者的感知调整值计算）</span></li><li><span>敏捷调整值：影响反射</span></li><li><span>体质调整值：影响强韧</span></li><li><span>魅力调整值：影响意志（先祖域先知的最终启示）、影响全豁免（启迪贤者最终启示、圣武士神恩和施恩、牧师勇士赐福）</span></li></ul><p><span>席拉通过主魅力加点搭配魅力人兼职：鳞拳+圣武士+先知（自然域：自然低语），就可以常驻双倍魅力上豁免+双倍魅力上AC（算上辟邪斩就是接近3倍）。如果是主角先知+天使道途，后期可以常驻2倍魅力豁免（施恩、勇士赐福），2倍魅力上AC（虚体魅上防【偏斜】+自然低语魅代敏）。</span></p><h3 id='豁免等级叠加的基本原则'><span>豁免等级叠加的基本原则</span></h3><ol start='' ><li><span>大部分同名的加值不能叠加，只能取最高值。比如英雄气概+2全豁免：士气，高等英雄气概 +2全豁免：士气，同时用了这两者，最多也只能+4全豁免。</span></li><li><span>不同名的加值可以叠加。比如&lt;+1抗力斗篷&gt; +1全豁免：抗力，英雄气概+2全豁免：士气，同时用这两个法术，就可以叠加变成+3全豁免。</span></li><li><span>少部分同名的加值（其他），来源不同或者注明能叠加就可以叠加。比如神恩+魅力调整值的全豁免：其他，“钢铁意志”+2意志：其他，两者叠加。</span></li></ol><h3 id='豁免等级的常见加值名称以及常用来源'><span>豁免等级的常见加值名称以及常用来源</span></h3><p><span>	</span><strong><span>这部分是常见的豁免等级加成</span></strong></p><figure><table><thead><tr><th><span>加值名称</span></th><th><span>来源1（持续时间为轮级和以下或有次数限制）</span></th><th><span>来源2（容易常驻的或者永久）</span></th></tr></thead><tbody><tr><td><span>基础</span></td><td>&nbsp;</td><td><span>来自职业的基本成长</span></td></tr><tr><td><span>属性</span></td><td>&nbsp;</td><td><span>见属性部分</span></td></tr><tr><td><span>士气</span></td><td>&nbsp;</td><td><span>[意气风发]，[英雄气概]，[高等英雄气概]</span></td></tr><tr><td><span>运气</span></td><td><span>[祈祷术]、天使道途[神圣赞美诗]、灵使道途[不破链接]</span></td><td><span>&lt;幸运护腕&gt;，&lt;幸运骰子&gt;，&lt;刺绣手套&gt;</span></td></tr><tr><td><span>崇圣</span></td><td><span>【善良之触】</span></td><td><span>[施恩]（目标必须是善良阵营），【审判】，&lt;神圣护卫腹卷&gt;</span></td></tr><tr><td><span>洞察</span></td><td><span>【知命】</span></td><td><span>&lt;应许之人面具&gt;，&lt;空无面具&gt;</span></td></tr><tr><td><span>抗力</span></td><td><span>【烛台守卫】</span></td><td><span>&lt;+N抗力斗篷&gt;，[（共用）心灵屏障]，[防护魔法]，[秩序护盾/神圣灵光/高等天使之貌的天佑灵光等]，</span></td></tr><tr><td><span>环境</span></td><td>&nbsp;</td><td><span>&lt;情势之戒&gt;</span></td></tr><tr><td><span>其他</span></td><td><span>[勇士赐福]（目标必须是守序善良阵营，非圣武士），【疯狂愿景】</span></td><td><span>“摆脱困境”，“饮血者“，”精通精灵免疫“，”明辨之眼“，”坚韧“，”钢铁意志“，”精通钢铁意志“，”闪电反射“，”精通闪电反射“，”顽石强韧“，”精通顽石强韧“，&lt;高奏凯歌之戒&gt;、&lt;召唤之戒&gt;、灵使道途&lt;心灵支柱&gt;</span></td></tr><tr><td><span>种族</span></td><td>&nbsp;</td><td><span>”钢铁灵魂“，【坚如磐石】，”壮胆“，”铁胃“，半身强运</span></td></tr><tr><td><span>天赋</span></td><td>&nbsp;</td><td><span>恶魔移植</span></td></tr><tr><td><span>神话</span></td><td>&nbsp;</td><td><span>恶魔道途【食魂魔相】</span></td></tr><tr><td><span>洞察</span></td><td>&nbsp;</td><td><span>【光明灵光】（&lt;希望使者不朽的爱&gt;盾牌给的灵光）</span></td></tr><tr><td><span>餐食</span></td><td>&nbsp;</td><td><span>恶魔杀手汤</span></td></tr></tbody></table></figure><p><span>	</span><strong><span>这部分是特殊的加值</span></strong></p><figure><table><thead><tr><th>&nbsp;</th><th><span>强韧</span></th><th><span>反射</span></th><th><span>意志</span></th></tr></thead><tbody><tr><td><span>其他</span></td><td><span>&lt;灵魂之灾&gt;戒指+4即死</span></td><td><span>水幕拒敌+4对抗无行动自如的敌人，&lt;反射项链&gt;+3</span></td><td><span>&lt;灵魂之灾&gt;戒指+4心智、&lt;殉道者之证&gt;+4</span></td></tr><tr><td><span>表现</span></td><td><span>战法转换+4</span></td><td><span>&lt;料敌护符&gt;+3</span></td><td>&nbsp;</td></tr><tr><td><span>闪避</span></td><td>&nbsp;</td><td><span>加速术+1</span></td><td>&nbsp;</td></tr><tr><td><span>洞察</span></td><td>&nbsp;</td><td><span>[预警]+2</span></td><td>&nbsp;</td></tr></tbody></table></figure><p><strong><span>以上的表格举例了那么多，其实主要的豁免来源还是在于职业等级、属性加成、士气加值和抗力加值，善良阵营则可以额外得到施恩的加成，守序善良阵营则是施恩+勇士赐福。</span></strong></p><h3 id='举例-3'><span>举例</span></h3><h4 id='守序善良圣武士的豁免'><span>守序善良圣武士的豁免</span></h4><p><strong><span>这里就举一个例子计算一下17级席拉能达到的各项豁免（这里就不考虑道途了）</span></strong><span>：</span></p><ul><li><p><span>职业：11圣武士1巫师1先知1鳞拳2活体1原怒者</span></p></li><li><p><span>装备：&lt;+6力敏腰带&gt;，&lt;残缺诡术师&gt;，&lt;召唤之戒&gt;，</span></p></li><li><p><span>BUFF：炽热玉米卷饼+4全属性，队友高等天使之貌的天佑灵光+4抗力</span></p></li><li><p><span>属性：体质= 14+4增强+4体型+4餐食 = 26（8），敏捷= 13+6增强+4餐食 = 23（6），感知=13+6增强+4餐食 = 23（6），魅力= 19+6增强+4炼金+4餐食 = 33（11）</span></p></li><li><p><span>职业带来的豁免（明显可以看出，兼职比纯职的豁免要高很多）：</span></p><ul><li><span>11圣武士：7强韧、3反射、7意志</span></li><li><span>1巫师：2意志</span></li></ul></li></ul><ul><li><span>1先知：2意志</span></li><li><span>1鳞甲之拳：2强韧、2反射</span></li><li><span>2活体解剖师：3强韧、3反射</span></li><li><span>1原怒者：2强韧</span></li></ul><figure><table><thead><tr><th><span>加成来源</span></th><th><span>职业</span></th><th><span>属性</span></th><th><span>魅力双倍豁免</span></th><th><span>士气</span></th><th><span>抗力</span></th><th><span>闪避</span></th><th><span>其他</span></th><th><span>总计</span></th></tr></thead><tbody><tr><td><span>强韧</span></td><td><span>14</span></td><td><span>8</span></td><td><span>22</span></td><td><span>4</span></td><td><span>4</span></td><td>&nbsp;</td><td><span>2（召唤之戒）</span></td><td><span>54</span></td></tr><tr><td><span>反射</span></td><td><span>8</span></td><td><span>6</span></td><td><span>22</span></td><td><span>4</span></td><td><span>4</span></td><td><span>1（加速术）</span></td><td><span>2（召唤之戒）</span></td><td><span>47</span></td></tr><tr><td><span>意志</span></td><td><span>11</span></td><td><span>6</span></td><td><span>22</span></td><td><span>4</span></td><td><span>4</span></td><td>&nbsp;</td><td><span>2（召唤之戒）</span></td><td><span>49</span></td></tr></tbody></table></figure><p><strong><span>可以看出来，这个豁免等级基本上可以无视大部分控制了，再强行兼职混血术士，用巅峰血脉拿各种免疫（也没啥有用的免疫）就是锦上添花</span></strong><span>。如果算上共用心灵屏障和防护魔法之类的法师——对抗对应效果+8抗力，那么对抗相应效果的豁免都再加4点。</span></p><h4 id='非善良人的豁免'><span>非善良人的豁免</span></h4><p><strong><span>以上全部看完，你是不是会感觉非善良人的豁免就没救了？其实完全不对，在道途、装备和BUFF的加成下，基本上全队都能实现很高的豁免，就算在不公平难度下，后期靠豁免无视大部分敌人的法术也是完全没问题的。</span></strong></p><p><span>这里再举一个例子，就用聂纽来举例好了，灵使道途的情况下，20级聂纽的全豁免如下</span></p><ul><li><p><span>职业：10卷轴专家10博学士</span></p></li><li><p><span>装备：&lt;+6极致体能腰带&gt;，&lt;+6极致精神帽&gt;，&lt;召唤之戒&gt;，&lt;神圣护卫腹卷&gt;，</span></p></li><li><p><span>BUFF：炽热玉米卷饼+4全属性、加速术、水幕拒敌、心灵屏障、防护魔法、光明灵光、自信之心、心灵支柱</span></p></li><li><p><span>属性：体质= 12+6增强+4体型+4餐食 = 26（8），敏捷= 15+6增强+4餐食+2体型+5士气（自信之心） = 32（11），感知=12+6增强+4餐食 = 22（6）</span></p></li><li><p><span>职业带来的豁免：</span></p><ul><li><span>10卷轴专家：3强韧、3反射、7意志</span></li><li><span>10博学士：3强韧、3反射、5意志</span></li></ul></li></ul><figure><table><thead><tr><th><span>加成来源</span></th><th><span>职业</span></th><th><span>属性</span></th><th><span>崇圣</span></th><th><span>士气</span></th><th><span>抗力</span></th><th><span>闪避</span></th><th><span>其他</span></th><th><span>运气</span></th><th><span>洞察</span></th><th><span>天赋</span></th><th><span>总计</span></th></tr></thead><tbody><tr><td><span>强韧</span></td><td><span>6</span></td><td><span>8</span></td><td><span>4</span></td><td><span>4</span></td><td><span>4/8</span></td><td>&nbsp;</td><td><span>2（召唤之戒）+4（心灵支柱）</span></td><td><span>3（不破链接）</span></td><td><span>2（光明灵光）</span></td><td><span>2（恶魔移植）</span></td><td><span>39/43</span></td></tr><tr><td><span>反射</span></td><td><span>6</span></td><td><span>11</span></td><td><span>4</span></td><td><span>4</span></td><td><span>4/8</span></td><td><span>1</span></td><td><span>2（召唤之戒）+4（心灵支柱）+4（水幕拒敌）</span></td><td><span>3（不破链接）</span></td><td><span>2（光明灵光）</span></td><td><span>2（恶魔移植）</span></td><td><span>47/51</span></td></tr><tr><td><span>意志</span></td><td><span>12</span></td><td><span>6</span></td><td><span>4</span></td><td><span>4</span></td><td><span>4/8</span></td><td>&nbsp;</td><td><span>2（召唤之戒）+4（心灵支柱）</span></td><td><span>3（不破链接）</span></td><td><span>2（光明灵光）</span></td><td><span>2（恶魔移植）</span></td><td><span>43/47</span></td></tr></tbody></table></figure><p><span>其实如果是主角的话，因为装备和BUFF会更好，豁免很容易就能堆到非常高的程度。后期聂纽完全可以带反射闪避戒指来无视有巅峰元素的敌人的法术。</span></p><h2 id='减值叠加原则'><span>减值叠加原则</span></h2><p><span>减值叠加原则：</span></p><ol start='' ><li><span>没特殊说明的话，不同来源的减值都可以叠加</span></li><li><span>同名的减值不叠加，比如战栗和恐惧导致的减值只计算一次，比如预知之语（阻碍）和祈祷术（敌人）的减值不叠加。</span></li></ol><p><span>可以看出减值非常好叠加，但是大部分给敌人负面状态（减属性）的能力或法术，都需要先过豁免/攻击检定，所以大部分都是比较鸡肋的。</span></p><p><strong><span>以下举例几个不需要豁免检定（或者敌人豁免检定成功也可以给负面状态）就能够削减敌人豁免的手段（不考虑免疫），真正强力的就是邪眼、可怖外表/末日挽歌、【狩猎目标】+&lt;大猎物手套&gt;、[祈祷术]、[神圣/亵渎赞美诗]</span></strong></p><figure><table><thead><tr><th><span>法术或能力</span></th><th><span>给敌人的负面状态</span></th><th><span>给敌人的豁免减值</span></th></tr></thead><tbody><tr><td><span>【邪眼】</span></td><td>&nbsp;</td><td><span>-4全豁免</span></td></tr><tr><td><span>[祈祷术]、[神圣/亵渎赞美诗]</span></td><td>&nbsp;</td><td><span>-1/-2全豁免（不同法术可叠加）</span></td></tr><tr><td><span>[失败预言]</span></td><td><span>战栗、恶心</span></td><td><span>-4全豁免</span></td></tr><tr><td><span>[力竭波]/[热风术]</span></td><td><span>力竭</span></td><td><span>-3反射</span></td></tr><tr><td><span>【狩猎目标】+&lt;大猎物手套&gt;</span></td><td><span>恶心</span></td><td><span>-2全豁免</span></td></tr><tr><td><span>[心灵迷雾]</span></td><td><span>（不免疫这个的敌人走出迷雾必定吃到减值，这个算BUG了，只是介绍一下，不鼓励用）</span></td><td><span>-10/-20意志</span></td></tr><tr><td><span>【末日挽歌】/[可怖外表]，延时恐吓术/延时恐惧术</span></td><td><span>战栗</span></td><td><span>-2全豁免</span></td></tr><tr><td><span>高等解除魔法+暴力解法+解法余波</span></td><td><span>恶心+解法余波，且敌人的英雄气概/污邪灵光都被解除相当于-8全豁免</span></td><td><span>-4到-12或者更高的全豁免</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><span>下面举例的是需要过豁免，但是就算豁免成功了，只要在区域内每轮都要进行一次豁免检定的法术，注意是前期用的，后面主要用上面的办法。</span></p><figure><table><thead><tr><th><span>法术或能力</span></th><th><span>给敌人的负面状态</span></th><th><span>给敌人的豁免减值</span></th></tr></thead><tbody><tr><td><span>[致病纠缠]</span></td><td><span>纠缠、恶心（豁免失败以后在法术范围内一直保持）</span></td><td><span>-2意志和强韧、-4反射</span></td></tr><tr><td><span>[蛛网术]</span></td><td><span>擒抱</span></td><td><span>-2反射</span></td></tr></tbody></table></figure><p><span>利用好以上的减豁免手段，搭配高等解除魔法来解除敌人的buff（大部分敌人的心智免疫和全豁免都是靠buff叠的），法术基本上攻无不克了。</span></p><h2 id='常用法术对抗'><span>常用法术对抗</span></h2><p><strong><span>大部分给负面“状态”的法术都会带有一些关联的法术描述符</span></strong><span>，比如战栗一般就是跟心智有关，所以免疫心智的敌人基本上没法用正常方法使其进入战栗“状态”。因此就算没有办法免疫某些负面“状态”，但是可以免疫这些负面“状态”关联的法术描述符来免受影响，</span><strong><span>比如靠免疫心智/免疫胁迫来免受困惑，比如靠行动自如+抵抗寒冷来无视冰封之牢的效果</span></strong><span>。</span></p><p><strong><span>注</span></strong><span>：【植物特性】来自于奥能师的奥能技艺---【坚木躯体】，【不死生物特性】来自于巫妖道途的法术---&#39;不死者祝福&#39;。</span></p><p><strong><span>注</span></strong><span>：宗师之杖和巫妖的那个能力只能破除对于法术/学派描述符的免疫，对于负面状态的免疫则无法破除。比如敌人如果有行动自如，可以免疫所有行动受限的状态，那么你即使使用了宗师之杖+光之锁链/冰封之牢，敌人也不会被麻痹；比如敌人如果有免疫战栗这个负面状态，那么你即使用了宗师之杖+失败预言，敌人也不会陷入战栗状态。</span></p><h3 id='常见负面状态'><span>常见负面状态</span></h3><figure><table><thead><tr><th><span>常见负面“状态”</span></th><th><span>常见关联学派/法术/状态描述符（不是必定关联）</span></th><th><span>来源</span></th><th><span>免疫此负面状态的手段</span></th><th><span>解除此负面状态的手段</span></th></tr></thead><tbody><tr><td><span>睡眠</span></td><td><span>[心智]、（胁迫）</span></td><td><span>腐烂幻象[心智、恐惧]，睡眠术（胁迫）[心智]，梦境护幕（胁迫）[心智]</span></td><td><span>植物特性，不死生物特性，精灵免疫，龙类特性</span></td><td><span>受到伤害</span></td></tr><tr><td><span>困惑</span></td><td><span>[心智]、（胁迫）</span></td><td><span>{精神错乱，困惑术，饕餮虫的絮语，混沌护幕}（胁迫）[心智]，混沌之语，（毒啮魔的）嗡鸣（暂无描述符）</span></td><td>&nbsp;</td><td><span>医疗术，圣疗，游荡者的专注攻击（困惑），绝不动摇（这个是暂时压制）</span></td></tr><tr><td><span>支配</span></td><td><span>[心智]、（胁迫）</span></td><td><span>支配人类/支配怪物（胁迫）[心智]</span></td><td><span>防护阵营</span></td><td>&nbsp;</td></tr><tr><td><span>战栗</span></td><td><span>[心智]、[情绪]、[恐惧]</span></td><td><span>打击士气[心智]，可怖外表的灵光[心智、恐惧]，末日挽歌[心智]</span></td><td>&nbsp;</td><td><span>圣疗，游荡者的专注攻击（战栗），绝不动摇（这个是暂时压制）</span></td></tr><tr><td><span>惊惧</span></td><td><span>[心智]、[情绪]、[恐惧]</span></td><td><span>惊恐术[心智、情绪、恐惧]，恐吓术/恐惧术[心智、情绪、恐惧]</span></td><td>&nbsp;</td><td><span>圣疗，绝不动摇（这个是暂时压制）</span></td></tr><tr><td><span>恐慌</span></td><td><span>[心智]、[情绪]、[恐惧]</span></td><td><span>游戏里应该是跟惊惧合并了</span></td><td>&nbsp;</td><td><span>绝不动摇（这个是暂时压制）</span></td></tr><tr><td><span>畏缩</span></td><td><span>[心智]、[情绪]</span></td><td><span>（群体）严加斥责（胁迫）[心智、情绪、恐惧]、灭顶悲恸/神威如岳（胁迫）[心智、情绪]</span></td><td>&nbsp;</td><td><span>绝不动摇（这个是暂时压制）</span></td></tr><tr><td><span>迷魂</span></td><td><span>[心智]</span></td><td><span>催眠术（胁迫）[心智]，妙语祷言，虹彩图纹</span></td><td>&nbsp;</td><td><span>受到伤害</span></td></tr><tr><td><span>晕眩</span></td><td><span>[心智]</span></td><td><span>次级晕眩术（胁迫）[心智]，渎神之语[混乱、音波]、（纳祭魔的）秽恶灵光[心智]</span></td><td>&nbsp;</td><td><span>医疗术，圣疗</span></td></tr><tr><td><span>震慑</span></td><td><span>[心智]</span></td><td><span>（食肉晶簇的）震慑灵光[心智]、（妄乱魔的）震慑尖鸣（暂无描述符）、暴力解法（无描述符）</span></td><td><span>寒冰/火焰之躯，植物特性，不死生物特性</span></td><td><span>医疗术，圣疗</span></td></tr><tr><td><span>纠缠</span></td><td><span>行动受限</span></td><td><span>XX纠缠</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>擒抱</span></td><td><span>行动受限</span></td><td><span>蛛网术</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>恍惚</span></td><td><span>行动受限</span></td><td><span>缓慢术，【知命】诅咒</span></td><td>&nbsp;</td><td><span>圣疗</span></td></tr><tr><td><span>麻痹</span></td><td><span>行动受限</span></td><td><span>（XX）定身术（胁迫）[心智]，（群体）冰封之牢[寒冷]，光之锁链[善良]，绞缚定身（胁迫）[心智]，</span></td><td><span>植物特性，不死生物特性，龙类特性</span></td><td><span>移除麻痹，圣疗</span></td></tr><tr><td><span>疲乏</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>【跛足】诅咒，天使的防弱化结界，巫术：救难</span></td><td><span>医疗术，（次等/高等）复原术，圣疗</span></td></tr><tr><td><span>力竭</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>【跛足】诅咒，天使的防弱化结界</span></td><td><span>医疗术，（高等）复原术，圣疗</span></td></tr><tr><td><span>俯卧</span></td><td>&nbsp;</td><td><span>津波（这个可以被行动自如防止俯卧），油腻术[困难地形]（这个可以被行动自如防止俯卧），酷热之风[火]，绊摔战技，闯越，复仇旋风</span></td><td><span>飞空特性（玩家的飞翼没这个效果，部分恶魔有翅膀但是没飞空也不行），玄妙自然，虚体特性，&lt;爆发之靴&gt;，&lt;卫士盾牌&gt;</span></td><td><span>回合制里自己选择是否站起来，即时制里自动站起来</span></td></tr><tr><td><span>恶心</span></td><td><span>[毒素]</span></td><td><span>致病纠缠[毒素]，暴力解法（无描述符）</span></td><td><span>移除恶心，天使的防弱化结界</span></td><td><span>医疗术，移除恶心，圣疗，游荡者的专注攻击（恶心）</span></td></tr><tr><td><span>反胃</span></td><td><span>[毒素]</span></td><td><span>臭云术[毒素]，</span></td><td><span>天使的防弱化结界</span></td><td><span>医疗术，</span></td></tr><tr><td><span>各种毒素</span></td><td><span>[毒素]</span></td><td>&nbsp;</td><td><span>（共用）延缓毒发，寒冰/火焰之躯，植物特性，不死生物特性，天使的防弱化结界</span></td><td><span>医疗术，移除毒素，圣疗，治疗负向效果</span></td></tr><tr><td><span>各种疾病</span></td><td><span>[疾病]</span></td><td>&nbsp;</td><td><span>寒冰/火焰之躯，不死生物特性，天使的防弱化结界，圣武士的【神佑】，武僧的【无垢】，巫术：强效救难</span></td><td><span>医疗术，移除疾病，圣疗，治疗负向效果</span></td></tr><tr><td><span>目盲</span></td><td>&nbsp;</td><td><span>目盲术[诅咒]，闪光尘，神圣灵光[善良]，颂圣之语[善良]</span></td><td><span>寒冰/火焰之躯，巫术：强效救难</span></td><td><span>医疗术，移除目盲</span></td></tr><tr><td><span>各种诅咒</span></td><td><span>[诅咒]</span></td><td><span>降咒[诅咒]，高等降咒[诅咒]</span></td><td><span>巫术：强效救难</span></td><td><span>移除诅咒，圣疗</span></td></tr><tr><td><span>’狂乱之歌‘</span></td><td><span>[心智]</span></td><td><span>狂乱之歌[心智]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>’弱智术‘</span></td><td><span>[心智]</span></td><td><span>弱智术[心智]</span></td><td>&nbsp;</td><td><span>医疗术</span></td></tr><tr><td><span>&#39;恶意变形术&#39;</span></td><td><span>[变形]</span></td><td><span>恶意变形术[变形]</span></td><td><span>植物特性，虚体和气体生物</span></td><td><span>移除诅咒</span></td></tr><tr><td><span>属性伤害</span></td><td>&nbsp;</td><td><span>神药，各种疾病，各种毒素，污邪灵光的反伤，极地午夜</span></td><td><span>寒冰/火焰之躯，不死生物特性（仅限肉体属性），天使的防弱化结界</span></td><td><span>医疗术，（次等/高等）复原术</span></td></tr><tr><td><span>属性流失</span></td><td>&nbsp;</td><td><span>影龙的吐息，威加魔的吐息</span></td><td><span>天使的防弱化结界</span></td><td><span>（高等）复原术</span></td></tr><tr><td><span>负向等级/能量吸取</span></td><td>&nbsp;</td><td><span>幽灵的攻击，弱能术、吸能术</span></td><td><span>防死结界，不死生物特性</span></td><td><span>（高等）复原术</span></td></tr><tr><td><span>属性吸取</span></td><td>&nbsp;</td><td><span>幽灵的攻击</span></td><td><span>防死结界，不死生物特性</span></td><td><span>同属性伤害</span></td></tr></tbody></table></figure><h3 id='常见描述符和其他效果'><span>常见描述符和其他效果</span></h3><figure><table><thead><tr><th><span>常见学派/法术描述符</span></th><th><span>来源</span></th><th><span>免疫此法术描述符的手段</span></th></tr></thead><tbody><tr><td><span>[心智]/[影响心灵]</span></td><td><span>威加魔吐息的属性流失，敌人的各种惑控/幻术法术，以及晶簇的震慑灵光。</span></td><td><span>植物特性，不死生物特性，</span><del><span>神圣/邪恶灵光</span></del><span>，&#39;秩序护盾/混沌护幕&#39;，&lt;鲜血明晰&gt;，&lt;殉道者之证&gt;，&#39;友善之拥&#39;，&#39;不破链接&#39;</span></td></tr><tr><td><span>[即死]</span></td><td><span>女妖之嚎[即死、音波]、死亡一指[即死]</span></td><td><span>不死生物特性，宁静领域的死亡防护结界（除此之外还有防死结界的全部效果），生命域的最终启示</span></td></tr><tr><td><span>[诅咒]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>（魅惑）---惑控系两个学派之一</span></td><td><span>游戏里敌人基本上没有魅惑子学派法术</span></td><td><span>‘防护阵营’，‘英雄祈神’，圣武士的【坚定灵光】</span></td></tr><tr><td><span>（胁迫）---惑控系两个学派之一</span></td><td><span>游戏里几乎所有惑控系法术都应该有胁迫描述符，但是有BUG导致（高等）命令术这些新增法术的描述符缺失。</span></td><td><span>&lt;书呆子头环&gt;，圣武士的【公正灵光】</span></td></tr><tr><td><span>[恐惧]</span></td><td><span>敌人的诡影杀手/魅影杀手等</span></td><td><span>&#39;高等英雄气概&#39;，&#39;英雄祈神&#39;，圣武士的【勇气灵光】和&#39;勇武灵光&#39;，</span><del><span>移除恐惧</span></del></td></tr><tr><td><span>[毒素]</span></td><td>&nbsp;</td><td><span>‘寒冰/火焰之躯‘，‘（共用）延缓毒发’，【不死生物特性】，天使的&#39;防弱化结界‘</span></td></tr><tr><td><span>[疾病]</span></td><td>&nbsp;</td><td><span>‘寒冰/火焰之躯’，圣武士的【神佑】，武僧的【无垢】，【不死生物特性】，天使的&#39;防弱化结界‘</span></td></tr><tr><td><span>[情绪]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>[音波]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>[变形]</span></td><td><span>恶意变形术，变巨/缩小等</span></td><td><span>【植物特性】</span></td></tr><tr><td><span>[善良]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>[邪恶]</span></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><strong><span>其他效果</span></strong></td><td><strong><span>来源</span></strong></td><td><strong><span>免疫此效果的手段</span></strong></td></tr><tr><td><span>毒气喷吐</span></td><td><span>影龙的吐息，威加魔的吐息等</span></td><td><span>’复仇旋风‘</span></td></tr><tr><td><span>有害气体效应</span></td><td><span>’臭云术‘、’死云术‘、’心灵迷雾‘</span></td><td><span>’复仇旋风‘，’维生气泡‘</span></td></tr><tr><td><span>困难地形</span></td><td><span>召石、油腻术、蛛网术、纠缠术、焦油池等</span></td><td><span>&#39;行动自如&#39;，&#39;（群体）轻羽步&#39;，【飞空特性】，【飞翼】</span></td></tr><tr><td><span>行动受限</span></td><td><span>包括困难地形、恍惚、麻痹、纠缠等</span></td><td><span>&#39;行动自如&#39;---其实是无视魔法效果导致的行动受限+无视擒抱</span></td></tr></tbody></table></figure><h3 id='常见能量伤害'><span>常见能量伤害</span></h3><figure><table><thead><tr><th><span>常见法术伤害</span></th><th><span>免疫</span></th><th><span>抵抗</span></th></tr></thead><tbody><tr><td><span>酸</span></td><td><span>高等天使之貌</span></td><td><span>（共用）防护/抵抗能量，天使光环</span></td></tr><tr><td><span>火</span></td><td><span>水幕拒敌，火焰之躯</span></td><td><span>（共用）防护/抵抗能量，天使光环</span></td></tr><tr><td><span>电</span></td><td><span>寒冰/火焰之躯</span></td><td><span>（共用）防护/抵抗能量，天使光环</span></td></tr><tr><td><span>冰</span></td><td><span>高等天使之貌，寒冰之躯</span></td><td><span>（共用）防护/抵抗能量，天使光环</span></td></tr><tr><td><span>负能量伤害/负能量效应</span></td><td><span>防死结界</span></td><td><span>天使光环</span></td></tr><tr><td><span>神力</span></td><td><span>无</span></td><td><span>天使光环</span></td></tr><tr><td><span>圣洁</span></td><td><span>无</span></td><td><span>天使光环</span></td></tr><tr><td><span>力场</span></td><td><span>无</span></td><td><span>天使光环</span></td></tr><tr><td><span>污邪</span></td><td><span>无</span></td><td><span>天使光环</span></td></tr><tr><td><span>音波</span></td><td><span>无</span></td><td><span>（共用）防护/抵抗能量，天使光环</span></td></tr><tr><td><span>集群伤害【注：这个不是能量伤害】</span></td><td>&nbsp;</td><td><span>（共用）石肤等各种DR</span></td></tr></tbody></table></figure><h2 id='常用的好用法术'><span>常用的好用法术</span></h2><p><strong><span>注</span></strong><span>：游戏里术士、法师和奥能师用同一个法表，先知和牧师用同一个法表，诗人和歌者用同一个法表，奥法暴徒用的是6环的法师表，战斗祭祀用的是6环牧师表，猎人是游侠+德鲁伊混合的6环表（相同法术按照低环位计算），因此后面会简写。</span></p><p><strong><span>通用型（能给队友加的）分钟级或者以上的buff --- 常驻效果</span></strong></p><figure><table><thead><tr><th><span>通用型常驻BUFF名称</span></th><th><span>常用施术者</span></th><th><span>效果（常用的）</span></th><th><span>优先级</span></th><th><span>目标</span></th></tr></thead><tbody><tr><td><strong><span>士气加值类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>祝福术</span></td><td><span>牧师/审判官 1</span></td><td><span>对抗恐惧的豁免和AB+1【士气】，解除孢子</span></td><td>&nbsp;</td><td><span>群体</span></td></tr><tr><td><span>英雄气概</span></td><td><span>炼金术士/巫师/法师 3，先祖域 3，诗人 2</span></td><td><span>全豁免、技能检定和AB+2【士气】</span></td><td><span>完全取代祝福术</span></td><td><span>单体</span></td></tr><tr><td><span>意气风发</span></td><td><span>诗人 3</span></td><td><span>全豁免、属性检定、技能检定、武器伤害和AB+2【士气】</span></td><td><span>完全取代英雄气概</span></td><td><span>群体</span></td></tr><tr><td><span>高等英雄气概</span></td><td><span>法师 6，诗人 5</span></td><td><span>全豁免、技能检定和AB+4【士气】，1/CL的临时生命值，免疫恐惧效应</span></td><td><span>完全取代英雄气概</span></td><td><span>单体</span></td></tr><tr><td><span>英雄祈神</span></td><td><span>巫师/法师 9，生命域 9</span></td><td><span>武器伤害和AB+4【士气】，2d8+4的临时生命值，免疫恐惧和魅惑效应</span></td><td><span>搭配高等英雄气概使用</span></td><td><span>群体</span></td></tr><tr><td><strong><span>武器附魔类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>魔化武器</span></td><td><span>圣武士/审判官/牧师/法师/魔战士 1</span></td><td><span>人造武器增强加值+1，不与精制品+1AB的效果叠加。</span></td><td><del><span>可以与武器本身的增强加值叠加，在武器+5之前都可以用</span></del></td><td><span>武器</span></td></tr><tr><td><span>高等魔化武器</span></td><td><span>圣武士/审判官/牧师/法师/魔战士 3</span></td><td><span>人造武器增强加值每4CL+1，最高20级加5。</span></td><td><del><span>可以与武器本身的增强加值叠加</span></del><span>，在武器+5之前都可以用，</span><del><span>在高等魔化武器+2以后，跟魔化武器叠加</span></del></td><td><span>武器</span></td></tr><tr><td><span>魔牙</span></td><td><span>游侠/德鲁伊 1，狼颚诅咒 1</span></td><td><span>天生武器增强加值+1</span></td><td><span>在天生武器+5之前都可以用</span></td><td><span>单体</span></td></tr><tr><td><span>高等魔牙</span></td><td><span>游侠/德鲁伊 3，狼颚诅咒 3</span></td><td><span>天生武器增强加值每4CL+1</span></td><td><span>在天生武器+5之前都可以用，在高等魔牙+2以后，跟魔牙叠加</span></td><td><span>单体</span></td></tr><tr><td><span>圣战之刃</span></td><td><span>牧师 4</span></td><td><span>近战武器获得邪恶异界生物破敌，【破敌效果为对抗目标生物时武器增强加值额外+2 ---可以超过5，且造成2d6力场伤害】</span></td><td><span>打恶魔必备，超级强力</span></td><td><span>武器</span></td></tr><tr><td><span>祝福武器</span></td><td><span>荣耀领域 2，圣武士 1</span></td><td><span>武器获得善良阵营，对抗邪恶敌人的重击自动确认</span></td><td><span>打恶魔必备，超级强力</span></td><td><span>武器</span></td></tr><tr><td><strong><span>属性的增强加值类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>（共用）动物园系列（猫之轻灵，牛之蛮力等）</span></td><td><span>2环和6环</span></td><td><span>目标的某一属性获得+4增强加值</span></td><td><span>基本上都有收益，先保证C位的核心属性获得加成，比如在获得+4巨力腰带之前，近战力量人受到牛之蛮力的收益都极高。</span></td><td><span>单体或群体</span></td></tr><tr><td><strong><span>属性的体型加值类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>变巨术</span></td><td><span>炼金术士/巫师/法师 1，战斗域 1</span></td><td><span>目标的体型大一级 --- 武器骰大一级，力量+2【体型】，敏捷-2，大体型导致：AB和AC-1【体型】</span></td><td><span>中体型和小体型的天生触及都是5尺，中体型变成大体型以后触及范围+5尺，有效减少被敌人攻击的概率。基本上力系菜刀都是要变巨的。与缩小术相互反制。</span></td><td><span>单体</span></td></tr><tr><td><span>缩小术</span></td><td><span>炼金术士/巫师/法师 1</span></td><td><span>目标的体型小一级 --- 武器骰小一级，力量-2，敏捷+2【体型】，小体型导致：AB和AC+1【体型】</span></td><td><span>中体型和小体型的天生触及都是5尺（最小也是5尺），中体型变成小体型以后触及范围不变。基本上敏系菜刀都是要缩小的，缩小属于纯赚。与变巨术相互反制。</span></td><td><span>单体</span></td></tr><tr><td><span>伟岸雄姿</span></td><td><span>牧师/巫师/法师 7，炼金术士 6</span></td><td><span>目标的体型大两级 --- 武器骰大两级，力量+6【体型】，AB和AC-2【体型】，AC+6【天生防御】</span></td><td><span>力系菜刀的顶级体型法术，除了太大容易堵路以外没有缺点。敏系菜刀则可以先伟岸雄姿再缩小，或者先缩小再伟岸雄姿。</span></td><td><span>单体</span></td></tr><tr><td><span>动物异变</span></td><td><span>德鲁伊/法师 5，游侠 4</span></td><td><span>目标的体型大一级 --- 武器骰大一级，力量+8【体型】，敏捷-2，大体型导致AB和AC-1【体型】---根据动物伙伴体型有所不同，AC+2【天生防御】</span></td><td><span>动物伙伴的强力变形法术，一般配合伟岸雄姿使用。</span></td><td><span>单体</span></td></tr><tr><td><strong><span>属性的变形加值类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>（高等）变形术</span></td><td><span>法师 5和 7，炼金术士 5</span></td><td><span>变成动物，获得加成</span></td><td><span>基本上不骑乘的动物伙伴都要变形</span></td><td><span>单体</span></td></tr><tr><td><strong><span>物理防御类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>法师护甲</span></td><td><span>法师/巫师 1</span></td><td>&nbsp;</td><td><span>不穿甲的都要用</span></td><td><span>单体</span></td></tr><tr><td><span>虔诚护盾</span></td><td><span>牧师/审判官 1</span></td><td><span>AC+2【偏斜】，每6cl额外+1，最高+5（18CL）</span></td><td><span>必备</span></td><td><span>单体</span></td></tr><tr><td><span>树肤</span></td><td><span>游侠/德鲁伊/萨满/炼金术士 2，自然域 2，保护/植物领域 2</span></td><td><span>AC+2【天生防御增强】，3级后每3cl额外+1，最高+5（12CL）</span></td><td><span>必备</span></td><td><span>单体</span></td></tr><tr><td><span>魔化防具</span></td><td><span>审判官/牧师 3</span></td><td><span>每4CL使AC+1【盔甲增强】/【盾牌增强】，游戏里没上限，合书天使可以到+7</span></td><td><span>原版游戏必备，超高的AC来源，尤其是持盾者</span></td><td><span>单体</span></td></tr><tr><td><span>预警</span></td><td><span>德鲁伊/萨满/法师/巫师 9，先祖域 9</span></td><td><span>AC+2【洞察】，且永远不会措手不及【注：这里应该是等效直觉闪避】</span></td><td><span>必备</span></td><td><span>单体</span></td></tr><tr><td><span>石肤术</span></td><td><span>德鲁伊 5，审判官/魔战士/法师/萨满/炼金术师  4,</span></td><td><span>获得10dr/精金，无视伤害的上限为10/cl，最高150</span></td><td><span>前期给前排使用，用来抗集群伤害特别好用</span></td><td><span>单体</span></td></tr><tr><td><span>共用石肤</span></td><td><span>萨满/德鲁伊 6，炼金术师/审判官/法师5</span></td><td><span>获得10dr/精金，无视伤害的上限为10/cl，最高150</span></td><td><span>代替石肤术</span></td><td><span>群体</span></td></tr><tr><td><strong><span>法术效果对抗类</span></strong></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>移除恐惧</span></td><td><span>吟游诗人/牧师/萨满/审判官 1</span></td><td><span>跟描述不符，直接给免疫恐惧</span></td><td><span>必备</span></td><td><span>群体</span></td></tr><tr><td><span>（共用）防护阵营</span></td><td><span>牧师/审判者/圣武士/法师/萨满 1和2</span></td><td><span>直接给对抗对应阵营的免疫魅惑、免疫支配，对抗对应阵营的AC+2【偏斜】和豁免+2【抗力】</span></td><td><span>必备，6级之前基本可以取代虔诚护盾</span></td><td><span>单体/群体</span></td></tr><tr><td><span>共用抵抗能量</span></td><td><span>炼金术师/萨满/牧师/德鲁伊/审判者/圣武士/游侠/法师 3</span></td><td><span>获得对应能量抗性10点，7CL变成20，11CL变成30</span></td><td><span>必备</span></td><td><span>群体</span></td></tr><tr><td><span>共用延缓毒发</span></td><td><span>炼金术士/吟游诗人/牧师/德鲁伊/圣武士/游侠/巫师/萨满 3</span></td><td><span>法术持续时间内免疫毒素效果</span></td><td><span>必备</span></td><td><span>群体</span></td></tr><tr><td><span>行动自如</span></td><td><span>炼金术师/吟游诗人/牧师/德鲁伊/审判官 /游侠 4</span></td><td><span>无视魔法效果导致的行动受限+无视擒抱，包括困难地形、恍惚、麻痹、纠缠等</span></td><td><span>优先给T和前排</span></td><td><span>单体</span></td></tr><tr><td><span>防死结界</span></td><td><span>德鲁伊 5，炼金术师/牧师/审判官/圣武士/巫师 4</span></td><td><span>免疫负向等级/能量吸取，免疫负能量伤害，免疫属性吸取（就是幽灵那类敌人造成的力量伤害），对抗即死法术豁免+4【士气】</span></td><td><span>优先给T和前排</span></td><td><span>单体</span></td></tr><tr><td><span>共用防护能量</span></td><td><span>炼金术师/萨满/牧师/德鲁伊/审判者/圣武士/法师 4，猎人/游侠 3</span></td><td><span>吸收12/CL的对应能量伤害，最多吸收120伤害。</span></td><td><span>先计算防护能量再计算抵抗能量，所以这个用处一般是在于不公平难度，正常难度下用共用抵抗能量就足够了。</span></td><td><span>群体</span></td></tr><tr><td><span>维生气泡</span></td><td><span>牧师/法师 5，德鲁伊 4</span></td><td><span>免疫有害气体效果，包括：臭云术、疫病风暴、心灵迷雾等</span></td><td><span>必备</span></td><td><span>群体</span></td></tr><tr><td><span>真知术</span></td><td><span>德鲁伊 7，魔战士/法师/巫师/炼金术师 6，牧师/审判官 5</span></td><td><span>克制镜影术、朦胧术、移位术、（高等）隐形术</span></td><td><span>但凡是要攻击检定的队友，都要真知术</span></td><td><span>单体</span></td></tr><tr><td><span>共用真知术</span></td><td><span>德鲁伊 8，巫师/法师 7，审判官/萨满/牧师 6</span></td><td><span>克制镜影术、朦胧术、移位术、（高等）隐形术；目前有BUG导致真知术无法克制隐形，需要再补一个共用识破隐形。</span></td><td><span>代替真知术</span></td><td><span>群体</span></td></tr><tr><td><span>（共用）心灵屏障</span></td><td><span>法师8/9</span></td><td><span>1.4版本以后。获得免疫预言法术的效果，敌人的思维侦测、识破隐形和真知术无效。这样后期镜影术和高等隐形术更不容易被免疫了。而且对抗心智效果+8豁免【抗力】。</span></td><td><span>必备</span></td><td><span>群体（单体）</span></td></tr></tbody></table></figure><p><strong><span>通用分钟级以下的buff</span></strong></p><figure><table><thead><tr><th><span>通用型轮级BUFF名称</span></th><th><span>常用施术者</span></th><th><span>效果</span></th><th><span>优先级</span></th><th><span>受术者</span></th></tr></thead><tbody><tr><td><span>渐隐术</span></td><td><span>魔战士/法师 1</span></td><td><span>隐形以后攻击敌人，只要敌人没有反隐之类的手段，就会措手不及（AC失去敏捷加值），而且AB+2【隐蔽】。还能用来脱离仇恨。</span></td><td><span>高难度必备</span></td><td><span>单体</span></td></tr><tr><td><span>祈祷术</span></td><td><span>圣武士/审判官/牧师 3</span></td><td><span>伤害、豁免、技能检定和AB+1【运气】</span></td><td><span>攻坚必备</span></td><td><span>群体</span></td></tr><tr><td><span>加速术</span></td><td><span>炼金术士/诗人/魔战士/法师 3</span></td><td><span>AB+1【其他】，AC和反射+1【闪避】，移速+30【增强】，满BAB攻击次数+1</span></td><td><span>最高，没有加速术的菜刀队基本上废一半</span></td><td><span>群体</span></td></tr><tr><td><span>移位术</span></td><td><span>炼金术士/诗人/魔战士/法师 3</span></td><td><span>敌人对你的攻击获得50%隐蔽失手率，因为敌人有识破隐形而没有真知术，所以有时候防御端移位术比高等隐形术更好用。</span></td><td><span>给T使用非常不错，高等隐形术给输出手，移位术给T</span></td><td><span>单体</span></td></tr><tr><td><span>高等隐形术</span></td><td><span>炼金术士/诗人/审判官/魔战士/法师 4</span></td><td><span>进入隐形术状态，攻击不会取消隐形术效果。隐形的效果（若没有反制的话）：敌人对抗你的攻击时会失去AC的敏捷加值，且你对该敌人攻击的AB+2【隐蔽】，敌人攻击你的时候承受50%隐蔽失手率。</span></td><td><span>最高，前期基本上所有难打的敌人，基本上都可以靠高等隐形术+远程射手射爆</span></td><td><span>单体</span></td></tr><tr><td><span>荣光爆发</span></td><td><span>圣武士/审判官/牧师 4</span></td><td><span>对抗恐惧的豁免和AB+1【崇圣】，临时生命+1/CL</span></td><td><span>攻坚必备</span></td><td><span>群体</span></td></tr><tr><td><span>秩序护盾</span></td><td><span>牧师 8</span></td><td><span>免疫心智效应，全豁免+4【抗力】，AC+4【偏斜】，对抗混乱敌人释放的法术获得25法术抗力</span></td><td><span>同环的神圣灵光时不时失灵，相比之下，秩序护盾更好，心智免疫点击就送</span></td><td><span>群体</span></td></tr><tr><td><span>圣剑术</span></td><td><span>圣武士 4，荣耀领域 7</span></td><td><span>武器变成+5神圣武器，且附带次级反邪恶法阵</span></td><td><span>有的话还是很好用的，前期灰兵营送一个圣剑术卷轴，可以提早体验一下超强法术。</span></td><td><span>武器</span></td></tr><tr><td><span>火焰烙印</span></td><td><span>法师 7</span></td><td><span>受术者免疫施术者的火焰法术伤害，且受术者攻击附带额外1d6火焰伤害。</span></td><td><span>使用以后再存档+读档，然后就知道他的神奇效果了 ---基本上相当于群体版巨灵化身</span></td><td><span>群体</span></td></tr></tbody></table></figure><p><strong><span>目标为自身的强力法术 --- 一般是自带、靠卷轴或者炼金的注入/棕毛变化师的分享变化</span></strong></p><figure><table><thead><tr><th><span>目标为自身的强力法术</span></th><th><span>施术者</span></th><th><span>效果</span></th><th><span>优先级</span></th><th><span>受术者</span></th></tr></thead><tbody><tr><td><span>元素之躯1、2、3、4</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>龙形1、2、3</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>神能</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>金鹰之魂</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>轰鸣击</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>高等天使之貌</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>寒冰之躯</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>火焰之躯</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>水幕拒敌</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>复仇风暴</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>重压之刃</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>隼之型</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>飓风之弓</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>战法转换</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>可怖外表</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>识破命门</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>镜影术</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>护盾术</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>脚底抹油</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>克敌机先</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>巨灵化身</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
